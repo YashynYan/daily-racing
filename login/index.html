@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="../common-styles.css" rel="stylesheet" />
+    <link href="./style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <img src="../assets/images/logo.svg" />
+      <button
+        onclick="handleDialogVisibility()"
+        class="btn outline custom-header-button"
+      >
+        Sign In
+      </button>
+    </header>
+    <main>
+      <div class="info-block">
+        <h1>
+          Drive <span class="bright-blue-text">betting turnover</span> with
+          premium horse racing
+        </h1>
+        <h2>Track the Races Daily</h2>
+        <button class="btn primary custom-main-button" onclick="handleDialogVisibility()">Track Now</button>
+      </div>
+      <div class="side-image">
+        <div class="background"></div>
+        <div class="yellow-triangle"></div>
+        <img class="horse-img" src="../assets/images/horse-img.svg" />
+      </div>
+    </main>
+    <footer>
+      <div class="horse-racing-text">HORSE RACING</div>
+      <div class="footer-text">
+        <img src="../assets/images/logo.svg" width="180" height="57" />
+        <p class="info-text">
+          Horse racing is one of the most popular betting products on a
+          sportsbook and in shop, with billions bet on it each year.
+        </p>
+        <p class="copyright">
+          © 2021 dailyracingbets.com. All rights reserved.
+        </p>
+      </div>
+    </footer>
+    <div class="dialog" id="sign-in-dialog">
+      <div class="dialog-window">
+        <div class="dialog-close-block-mobile">
+          <img
+            onclick="handleDialogVisibility()"
+            class="close-icon-mobile"
+            src="../assets/icons/grey-close-icon.svg"
+          />
+        </div>
+        <div class="dialog-image">
+          <p class="horse-racing">HORSE RACING</p>
+          <img class="ellipse-image" src="../assets/images/Ellipse 69.svg" />
+          <img class="horse-image" src="../assets/images/dialog-image.svg" />
+        </div>
+        <div class="dialog-form-block">
+          <img
+            onclick="handleDialogVisibility()"
+            class="close-icon"
+            src="../assets/icons/grey-close-icon.svg"
+          />
+          <form action="/login/" method="POST" class="signin-form">  
+          <div class="dialog-form">
+            <img
+              class="logo-img"
+              src="../assets/images/logo.svg"
+              alt=""
+              width="202"
+              height="64"
+            />
+              <label for="username-field">Username</label>
+              <input
+                type="text"
+                id="username-field"
+                placeholder="Enter your login"
+                required
+              />
+              <label for="password-field">Password</label>
+              <div class="password-block">
+                <input
+                  id="password-field"
+                  type="password"
+                  placeholder="Enter your password"
+                  required
+                />
+                <img
+                  class="eye-icon"
+                  id="eye-icon"
+                  onClick="showPassword()"
+                  src="../assets/icons/eye-icon.svg"
+                />
+              </div>
+              <div class="remember-me">
+                <label class="remember-me-label" for="remember-me">
+                  <input type="checkbox" id="remember-me" />
+                  <span class="checkbox"></span>
+                  Remember me
+                </label>
+              </div>
+              <div class="error-field hidden">
+                <img src="../assets/icons/clarity_error.svg">
+                  Invalid username and/or password
+              </div>
+              <button type="submit" class="btn primary custom-main-button submit-button">Sign In</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
