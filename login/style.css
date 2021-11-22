@@ -1,0 +1,602 @@
+body {
+  margin: 0;
+  position: relative;
+}
+
+html {
+  height: 100%;
+}
+
+h1 {
+  font-size: 56px;
+  line-height: 80px;
+  text-transform: uppercase;
+  color: #000639;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 40px;
+  line-height: 56px;
+  color: #000639;
+
+  font-weight: normal;
+}
+
+main {
+  position: relative;
+  height: 720px;
+}
+
+.side-image {
+  position: absolute;
+  right: 0;
+  top: -280px;
+  width: 950px;
+  height: 1000px;
+}
+
+.horse-img {
+  position: absolute;
+  top: 150px;
+  right: 0;
+  z-index: 3;
+}
+
+.background {
+  /* border-left: 3px solid yellow; */
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  background: linear-gradient(
+    to bottom right,
+    transparent 0%,
+    transparent 50%,
+    #4d4dff -23.07%,
+    #8e0ecb 131.02%
+  );
+  /* 89.62deg, #4d4dff -23.07%, #8e0ecb 131.02%); */
+}
+
+.yellow-triangle {
+  position: absolute;
+  top: 0px;
+  z-index: 1;
+  right: 5px;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    to bottom right,
+    transparent 0%,
+    transparent 50%,
+    yellow -23.07%,
+    yellow 131.02%
+  );
+}
+
+.info-block {
+  width: 55%;
+  margin-left: 120px;
+  margin-top: 145px;
+  position: relative;
+}
+
+.bright-blue-text {
+  color: #4d4dff;
+}
+
+.custom-header-button {
+  position: absolute;
+  right: 150px;
+  z-index: 15;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.custom-main-button {
+  padding-left: 58px;
+  padding-right: 58px;
+}
+
+.invalid-field{
+  border: 1px solid #FF4D4D;
+}
+
+.error-field{
+  color: #FF4D4D;
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.hidden{
+  display: none
+}
+
+.error-field img{
+  margin-right: 8px;
+}
+
+.dialog {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background: rgba(50, 50, 50, 0.6);
+  backdrop-filter: blur(20px);
+  top: 0;
+}
+
+.dialog .dialog-window {
+  position: absolute;
+  top: 60px;
+  left: calc(50% - 502px);
+  display: flex;
+}
+
+.dialog .dialog-window .dialog-close-block-mobile {
+  display: none;
+}
+
+.dialog .dialog-window .dialog-image {
+  position: relative;
+  background: #4d4dff;
+  border-radius: 8px 0px 0px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 480px;
+}
+
+.dialog .dialog-window .dialog-image .ellipse-image {
+  position: absolute;
+  width: 211.7px;
+  height: 211.7px;
+  top: 80px;
+  left: 0;
+}
+
+.dialog .dialog-window .dialog-image .horse-racing {
+  color: #7a7aff;
+  opacity: 0.6;
+  font-weight: 900;
+  font-size: 100px;
+  line-height: 100px;
+  text-shadow: 0px 110px 82px rgba(7, 17, 41, 0.05),
+    0px 45.9554px 34.2576px rgba(7, 17, 41, 0.0359427),
+    0px 24.5699px 18.3158px rgba(7, 17, 41, 0.0298054),
+    0px 13.7737px 10.2677px rgba(7, 17, 41, 0.025),
+    0px 7.31511px 5.45308px rgba(7, 17, 41, 0.0201946),
+    0px 3.04398px 2.26915px rgba(7, 17, 41, 0.0140573);
+}
+.dialog .dialog-window .dialog-image .horse-image {
+  position: absolute;
+  top: 102px;
+  margin-left: -72px;
+  margin-right: -80px;
+  margin-bottom: -100px;
+}
+
+.dialog .dialog-window .dialog-form-block {
+  display: flex;
+  flex-direction: column;
+  background: #fafaff;
+  border-radius: 0px 8px 8px 0px;
+  padding: 22px 16px;
+}
+
+.dialog .dialog-window .dialog-form-block .dialog-form {
+  display: flex;
+  flex-direction: column;
+  margin: 113px 72px 131px;
+  width: 344px;
+}
+
+.dialog .dialog-window .dialog-form-block .dialog-form .logo-img {
+  align-self: center;
+  margin-bottom: 32px;
+}
+
+.dialog .dialog-window .dialog-form-block .dialog-form label {
+  color: #7e7e7e;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 4px;
+  font-weight: 400;
+}
+
+.dialog .dialog-window .dialog-form-block .dialog-form .password-block {
+  position: relative;
+  width: 100%;
+}
+
+.dialog
+  .dialog-window
+  .dialog-form-block
+  .dialog-form
+  .password-block
+  #password-field {
+  width: 100%;
+}
+
+.dialog .dialog-window .dialog-form-block .dialog-form input {
+  background: #ffffff;
+  border: 1px solid #bfcfff;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 8px;
+  height: 40px;
+  margin-bottom: 12px;
+}
+
+.dialog .dialog-window .dialog-form-block .dialog-form .remember-me {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.dialog .dialog-window .dialog-form-block .dialog-form .submit-button{
+  margin-top: 24px;
+}
+
+
+.dialog
+  .dialog-window
+  .dialog-form-block
+  .dialog-form
+  .remember-me
+  .remember-me-label {
+  font-size: 12px;
+  line-height: 18px;
+  margin: 0;
+  padding-top: 4px;
+}
+
+.dialog .dialog-window .dialog-form-block .dialog-form .remember-me input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  top: 4px;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  margin: 0;
+  z-index: 2;
+}
+
+.dialog
+  .dialog-window
+  .dialog-form-block
+  .dialog-form
+  .remember-me
+  input:checked
+  ~ .checkbox {
+  background-color: #4d4dff;
+  border: 1px solid #bfcfff;
+  box-sizing: border-box;
+  border-radius: 2px;
+}
+
+.dialog .dialog-window .dialog-form-block .dialog-form .remember-me .checkbox {
+  background: #fafaff;
+  /* fields border color */
+
+  border: 1px solid #bfcfff;
+  box-sizing: border-box;
+  border-radius: 2px;
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 16px;
+  width: 16px;
+}
+.dialog
+  .dialog-window
+  .dialog-form-block
+  .dialog-form
+  .remember-me
+  input:checked
+  ~ .checkbox::after {
+  display: block;
+}
+.dialog
+  .dialog-window
+  .dialog-form-block
+  .dialog-form
+  .remember-me
+  .checkbox::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 4px;
+  top: 1px;
+  width: 3px;
+  height: 7px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.dialog .dialog-window .dialog-form-block .dialog-form input::placeholder {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #c9c9c9;
+}
+
+.dialog
+  .dialog-window
+  .dialog-form-block
+  .dialog-form
+  .password-block
+  .eye-icon {
+  position: absolute;
+  right: 8px;
+  top: 14px;
+}
+
+.dialog .dialog-window .dialog-form-block .close-icon {
+  align-self: flex-end;
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1280px) {
+  .info-block {
+    width: 40%;
+    margin-left: 60px;
+    margin-top: 70px;
+  }
+
+  .side-image {
+    top: -200px;
+  }
+
+  main {
+    height: 800px;
+  }
+}
+
+@media screen and (max-width: 1220px) {
+  .info-block {
+    width: 60%;
+    margin-left: 60px;
+    margin-top: 70px;
+  }
+
+  .side-image {
+    position: absolute;
+    right: 0;
+    top: -200px;
+    width: 600px;
+    height: 800px;
+  }
+
+  .horse-img {
+    width: 519px;
+    height: 756px;
+  }
+
+  main {
+    height: 600px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .dialog .dialog-window .dialog-form-block .dialog-form {
+    margin: 70px 30px 80px;
+    width: 300px;
+  }
+
+  .dialog .dialog-window .dialog-image {
+    width: 300px;
+  }
+
+  .dialog .dialog-window {
+    left: calc(50% - 350px);
+  }
+  .dialog .dialog-window .dialog-image .ellipse-image {
+    position: absolute;
+    width: 211.7px;
+    height: 211.7px;
+    top: 40px;
+  }
+
+  .dialog .dialog-window .dialog-image .horse-racing {
+    font-size: 60px;
+    line-height: 60px;
+  }
+  .dialog .dialog-window .dialog-image .horse-image {
+    width: 408px;
+    height: 429px;
+  }
+}
+
+@media screen and (max-width: 910px) {
+  .horse-img {
+    width: 415px;
+    height: 600px;
+  }
+
+  .side-image {
+    position: absolute;
+    right: 0;
+    top: -200px;
+    width: 400px;
+    height: 750px;
+  }
+
+  main {
+    height: 550px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .info-block {
+    margin-top: 16px;
+    margin-bottom: 8px;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .horse-img {
+    position: absolute;
+    top: 27px;
+    right: 0;
+    z-index: 3;
+  }
+
+  .info-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 24px;
+    line-height: 36px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  .custom-main-button {
+    width: 75%;
+    align-self: center;
+  }
+
+  .custom-header-button {
+    position: unset;
+  }
+
+  header {
+    padding: 8px 16px;
+  }
+
+  header img {
+    width: 91px;
+    height: 29px;
+  }
+
+  .side-image {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 570px;
+  }
+
+  main {
+    display: flex;
+    height: 100%;
+    flex-direction: column-reverse;
+  }
+
+  .dialog {
+    width: 100%;
+    height: 100%;
+  }
+
+  .close-icon {
+    display: none;
+  }
+
+  .dialog .dialog-window {
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+  }
+
+  .dialog .dialog-window .dialog-close-block-mobile {
+    display: block;
+    background: #fafaff;
+    display: flex;
+    justify-content: flex-end;
+    padding: 22px;
+  }
+
+  .dialog .dialog-window .dialog-image {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .dialog .dialog-window .dialog-form-block {
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .dialog .dialog-window .dialog-image .ellipse-image {
+    position: absolute;
+    width: 74px;
+    height: 74px;
+    top: 14px;
+    left: 105px;
+  }
+
+  .dialog .dialog-window .dialog-image .horse-racing {
+    color: #7a7aff;
+    opacity: 0.6;
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 100px;
+    text-shadow: 0px 110px 82px rgba(7, 17, 41, 0.05),
+      0px 45.9554px 34.2576px rgba(7, 17, 41, 0.0359427),
+      0px 24.5699px 18.3158px rgba(7, 17, 41, 0.0298054),
+      0px 13.7737px 10.2677px rgba(7, 17, 41, 0.025),
+      0px 7.31511px 5.45308px rgba(7, 17, 41, 0.0201946),
+      0px 3.04398px 2.26915px rgba(7, 17, 41, 0.0140573);
+  }
+  .dialog .dialog-window .dialog-image .horse-image {
+    position: absolute;
+    top: 10px;
+    margin-left: -72px;
+    margin-right: -80px;
+    margin-bottom: -100px;
+    width: 364px;
+    height: 213px;
+  }
+
+  .dialog .dialog-window .dialog-form-block {
+    padding: 24px 16px;
+  }
+
+  .dialog .dialog-window .dialog-form-block .dialog-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .horse-img {
+    width: 207px;
+    height: 300px;
+  }
+  .side-image {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 300px;
+  }
+
+  footer .footer-text .info-text {
+    width: 100%;
+  }
+}

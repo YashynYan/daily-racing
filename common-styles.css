@@ -1,0 +1,200 @@
+@font-face {
+  font-family: Suisse Intl;
+  src: url("./assets/fonts/SuisseIntl-Thin.otf");
+  font-weight: 100;
+}
+@font-face {
+  font-family: Suisse Intl;
+  src: url("./assets/fonts/SuisseIntl-ThinItalic.otf");
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: Suisse Intl;
+  src: url("./assets/fonts/SuisseIntl-Ultralight.otf");
+  font-weight: 200;
+}
+@font-face {
+  font-family: Suisse Intl;
+  src: url("./assets/fonts/SuisseIntl-UltralightItalic.otf");
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Suisse Intl;
+  src: url("./assets/fonts/SuisseIntl-Light.otf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: Suisse Intl;
+  src: url("./assets/fonts/SuisseIntl-LightItalic.otf");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Suisse Intl;
+  src: url("./assets/fonts/SuisseIntl-Regular.otf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Suisse Intl;
+  src: url("./assets/fonts/SuisseIntl-RegularItalic.otf");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Suisse Intl;
+  src: url("./assets/fonts/SuisseIntl-Book.otf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Suisse Intl;
+  src: url("./assets/fonts/SuisseIntl-BookItalic.otf");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: Suisse Intl;
+  src: url("./assets/fonts/SuisseIntl-Medium.otf");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Suisse Intl;
+  src: url("./assets/fonts/SuisseIntl-MediumItalic.otf");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Suisse Intl;
+  src: url("./assets/fonts/SuisseIntl-SemiBold.otf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Suisse Intl;
+  src: url("./assets/fonts/SuisseIntl-SemiBoldItalic.otf");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Suisse Intl;
+  src: url("./assets/fonts/SuisseIntl-Bold.otf");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: Suisse Intl;
+  src: url("./assets/fonts/SuisseIntl-BoldItalic.otf");
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Suisse Intl;
+  src: url("./assets/fonts/SuisseIntl-Black.otf");
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: Suisse Intl;
+  src: url("./assets/fonts/SuisseIntl-BlackItalic.otf");
+  font-weight: 900;
+  font-style: italic;
+}
+
+html {
+  font-family: Suisse Intl;
+}
+
+header {
+  box-shadow: 0px 2px 4px -1px rgba(82, 91, 255, 0.08);
+  background-color: #fff;
+  padding: 8px 120px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  padding: 4px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 32px;
+}
+
+.outline {
+  border: 1px solid #4d4dff;
+  color: #4d4dff;
+}
+
+.primary {
+  background: #4d4dff;
+  color: #fff;
+}
+
+footer {
+  background: #fafbff;
+  position: relative;
+  height: 305px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 120px;
+  line-height: 139px;
+  color: #f0f3ff;
+}
+
+
+footer .footer-text {
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 32px;
+  color: #616161;
+}
+
+footer .footer-text .copyright {
+  font-size: 14px;
+  line-height: 32px;
+  color: #5b5b5b;
+  text-align: center;
+}
+footer .footer-text .info-text {
+  width: 493px;
+  text-align: center;
+}
+
+@media screen and (max-width: 920px) {
+  footer .horse-racing-text {
+    font-size: 40px;
+    line-height: 46px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  footer .footer-text .info-text {
+    width: 100%;
+  }
+
+  footer{
+    padding-top: 32px;
+  }
+}
