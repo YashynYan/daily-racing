@@ -25,16 +25,28 @@
           premium horse racing
         </h1>
         <h2>Track the Races Daily</h2>
-        <button class="btn primary custom-main-button" onclick="handleDialogVisibility()">Track Now</button>
+        <button
+          class="btn primary custom-main-button"
+          onclick="handleDialogVisibility()"
+        >
+          Track Now
+        </button>
       </div>
       <div class="side-image">
+        <div class="track-the-race-block">
+          <div>Track The Race</div>
+          <div>Track The Race</div>
+        </div>
         <div class="background"></div>
         <div class="yellow-triangle"></div>
         <img class="horse-img" src="../assets/images/horse-img.svg" />
       </div>
     </main>
     <footer>
-      <div class="horse-racing-text">HORSE RACING</div>
+      <div class="horse-racing-text">
+        <div>HORSE RACING</div>
+        <div>HORSE RACING</div>
+      </div>
       <div class="footer-text">
         <img src="../assets/images/logo.svg" width="180" height="57" />
         <p class="info-text">
@@ -66,27 +78,29 @@
             class="close-icon"
             src="../assets/icons/grey-close-icon.svg"
           />
-          <form action="/login/" method="POST" class="signin-form">  
-          <div class="dialog-form">
-            <img
-              class="logo-img"
-              src="../assets/images/logo.svg"
-              alt=""
-              width="202"
-              height="64"
-            />
+          <form action="/login/" method="POST" class="signin-form">
+            <div class="dialog-form">
+              <img
+                class="logo-img"
+                src="../assets/images/logo.svg"
+                alt=""
+                width="202"
+                height="64"
+              />
               <label for="username-field">Username</label>
               <input
                 type="text"
                 id="username-field"
                 placeholder="Enter your login"
                 required
+                name="username"
               />
               <label for="password-field">Password</label>
               <div class="password-block">
                 <input
                   id="password-field"
                   type="password"
+                  name="password"
                   placeholder="Enter your password"
                   required
                 />
@@ -105,10 +119,15 @@
                 </label>
               </div>
               <div class="error-field hidden">
-                <img src="../assets/icons/clarity_error.svg">
-                  Invalid username and/or password
+                <img src="../assets/icons/clarity_error.svg" />
+                Invalid username and/or password
               </div>
-              <button type="submit" class="btn primary custom-main-button submit-button">Sign In</button>
+              <button
+                type="submit"
+                class="btn primary custom-main-button submit-button"
+              >
+                Sign In
+              </button>
             </div>
           </form>
         </div>

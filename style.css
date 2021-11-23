@@ -1,0 +1,242 @@
+body {
+  background: #f9f9f9;
+  height: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+thead {
+  background: #ffffff;
+  border-radius: 4px 4px 0px 0px;
+}
+
+.thead-with-margin::after {
+  content:"@";
+    display:block;
+    line-height:10px;
+    text-indent:-99999px;
+    background: #f9f9f9;
+}
+
+th {
+  font-size: 14px;
+  line-height: 20px;
+  color: #000639;
+  font-weight: 300;
+  padding: 12px 0;
+}
+
+.avatar-block {
+  width: 48px;
+  height: 48px;
+  background: #4d4dff;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+.welcome-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 40px;
+}
+
+.user-name {
+  color: #4d4dff;
+}
+
+.enjoy-text {
+  color: #636363;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 8px;
+  gap: 8px;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.flex-grow-2 {
+  flex-grow: 2;
+}
+
+.block-header {
+  background-color: #4d4dff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #ffff;
+
+  padding-left: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-radius: 4px 4px 0px 0px;
+}
+
+.block-header-grey {
+  background-color: #e7e7ec;
+  color: #000639;
+}
+
+.race-bar {
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px -1px rgba(82, 91, 255, 0.08);
+  font-size: 16px;
+  line-height: 24px;
+  color: #000639;
+  background: #ffff;
+  padding: 16px;
+}
+
+.race-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.race-image {
+  flex-grow: 1;
+  height: 259px;
+  max-width: 300px;
+}
+
+.summary-details {
+  flex-grow: 1.5;
+  height: 235px;
+}
+
+.info-block-container {
+  background: #ffff;
+  border-radius: 8px;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  border-bottom: 1px solid #f0f0f0;
+  font-weight: 450;
+  font-size: 18px;
+  line-height: 24px;
+  color: #000639;
+}
+
+.info-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #828282;
+}
+
+.info-block :nth-child(2) {
+  font-weight: 300;
+}
+
+.yield-card {
+  padding: 8px 0px 8px 8px;
+  background: #ffffff;
+  font-size: 14px;
+  line-height: 24px;
+  color: #636363;
+}
+
+.yield-block :nth-child(n + 1) {
+  margin-bottom: 1px;
+}
+
+.yield-block :nth-last-child() {
+  margin-bottom: 0px;
+}
+
+.suggested-wagers-card {
+  padding: 8px 12px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.suggested-wagers-card :nth-child(1) {
+  flex-grow: 3;
+}
+.suggested-wagers-card :nth-child(2) {
+  flex-grow: 1;
+}
+
+.wager {
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #bfcfff;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000639;
+  display: flex;
+  justify-content: center;
+}
+
+.rounded-badge {
+  padding: 4px 0px 4px 12px;
+  background: #ffffff;
+  border-radius: 4px;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.horse-number {
+  margin-right: 8px;
+}
+
+.margin-bottom-1 {
+  margin-bottom: 1px;
+}
+.margin-bottom-4 {
+  margin-bottom: 4px;
+}
+.margin-bottom-8 {
+  margin-bottom: 8px;
+}
+
+.badges-stack :nth-child(n) {
+  margin-bottom: 1px;
+}
+
+.badges-stack :nth-last-child() {
+  margin-bottom: 0px;
+  border-radius: 0px 0px 4px 4px;
+}
+
+.exotic-result-badge {
+  padding: 12px;
+  background: #ffffff;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  color: #000639;
+  align-items: center;
+}

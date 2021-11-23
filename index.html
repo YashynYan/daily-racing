@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="./common-styles.css" rel="stylesheet" />
+    <link href="./style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <img src="../assets/images/logo.svg" />
+      <div class="flex-row">
+        <div class="flex-row">
+          <div class="avatar-block"></div>
+          <div class="welcome-block">
+            <div class="user-name">Welcome Admin</div>
+            <div class="enjoy-text">Enjoy the Races!</div>
+          </div>
+        </div>
+        <button onclick="handleDialogVisibility()" class="btn outline-danger">
+          Log Out
+        </button>
+      </div>
+    </header>
+    <main>
+      <div class="flex-grow-1">
+        <div class="margin-bottom-8">
+          <div class="block-header" id="current-date"></div>
+          <input type="text" />
+        </div>
+        <table  cellspacing="0">
+          <thead>
+            <tr>
+              <th>Track</th>
+              <th>Race</th>
+              <th>MTP</th>
+            </tr>
+          </thead>
+
+          <tbody id='races-table-body'>
+            <tr class="block-header">
+              <td></td>
+              <td style="padding: 12px;">Open for betting</td>
+              <td></td>
+            </tr>
+            <tr class="rounded-badge">
+              <td>Canada A-Wagga</td>
+              <td>9</td>
+              <td>Official</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="flex-grow-2">
+        <div class="race-bar margin-bottom-8">
+          <div>Australia Waga</div>
+        </div>
+        <div class="race-block margin-bottom-8">
+          <div class="race-image">
+            <img src="./assets/images/zzzzevs_3261-min-768x467 1 (1).svg" />
+          </div>
+          <div class="summary-details info-block-container">
+            <div class="header">Race Summary</div>
+            <div class="info-block">
+              <div>Race Class:</div>
+              <div>NA</div>
+            </div>
+            <div class="info-block">
+              <div>Race Value:</div>
+              <div>NA</div>
+            </div>
+            <div class="info-block">
+              <div>Distance:</div>
+              <div>NA</div>
+            </div>
+            <div class="info-block">
+              <div>Age:</div>
+              <div>NA</div>
+            </div>
+            <div class="info-block">
+              <div>Surface:</div>
+              <div>NA</div>
+            </div>
+          </div>
+        </div>
+        <table cellspacing="0">
+          <thead class="thead-with-margin">
+            <tr>
+              <th>PGM</th>
+              <th>Horse</th>
+              <th>Post</th>
+              <th>Win Odds</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="rounded-badge">
+              <td>1</td>
+              <td>Lunar Hero</td>
+              <td>pp1</td>
+              <td><div class="wager">7</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="flex-grow-1">
+        <div class="yield-block margin-bottom-8">
+          <div class="block-header">Yields</div>
+          <div class="yield-card">Win Yields:</div>
+          <div class="yield-card">Total Win Yield:</div>
+          <div class="yield-card">Progressive Win Yield:</div>
+        </div>
+        <div class="block-header block-header-grey">Suggested Wagers</div>
+        <div class="badges-stack margin-bottom-8">
+          <div class="suggested-wagers-card">
+            <div>1</div>
+            <div class="wager">7</div>
+          </div>
+          <div class="suggested-wagers-card">
+            <div>2</div>
+            <div class="wager">7</div>
+          </div>
+          <div class="suggested-wagers-card">
+            <div>5</div>
+            <div class="wager">7</div>
+          </div>
+        </div>
+        <div>
+          <div class="block-header block-header-grey">Results</div>
+          <div class="rounded-badge flex-row margin-bottom-1">
+            <div class="horse-number flex-row">1</div>
+            <div class="flex-column">
+              <div>Horse</div>
+              <div>Fleetertan</div>
+            </div>
+          </div>
+          <div class="info-block-container margin-bottom-4">
+            <div class="info-block margin-bottom-4">
+              <div>PP</div>
+              <div>NA</div>
+            </div>
+            <div class="info-block margin-bottom-4">
+              <div>PGM</div>
+              <div>NA</div>
+            </div>
+            <div class="info-block margin-bottom-4">
+              <div>Win</div>
+              <div>NA</div>
+            </div>
+            <div class="info-block margin-bottom-4">
+              <div>Place</div>
+              <div>NA</div>
+            </div>
+            <div class="info-block margin-bottom-4">
+              <div>Show</div>
+              <div>NA</div>
+            </div>
+          </div>
+          <div class="rounded-badge flex-row margin-bottom-1">
+            <div class="horse-number flex-row">1</div>
+            <div class="flex-column">
+              <div>Horse</div>
+              <div>Fleetertan</div>
+            </div>
+          </div>
+          <div class="info-block-container margin-bottom-4">
+            <div class="info-block margin-bottom-4">
+              <div>PP</div>
+              <div>NA</div>
+            </div>
+            <div class="info-block margin-bottom-4">
+              <div>PGM</div>
+              <div>NA</div>
+            </div>
+            <div class="info-block margin-bottom-4">
+              <div>Win</div>
+              <div>NA</div>
+            </div>
+            <div class="info-block margin-bottom-4">
+              <div>Place</div>
+              <div>NA</div>
+            </div>
+            <div class="info-block margin-bottom-4">
+              <div>Show</div>
+              <div>NA</div>
+            </div>
+          </div>
+          <div class="rounded-badge flex-row margin-bottom-1">
+            <div class="horse-number flex-row">1</div>
+            <div class="flex-column">
+              <div>Horse</div>
+              <div>Fleetertan</div>
+            </div>
+          </div>
+          <div class="info-block-container margin-bottom-8">
+            <div class="info-block margin-bottom-4">
+              <div>PP</div>
+              <div>NA</div>
+            </div>
+            <div class="info-block margin-bottom-4">
+              <div>PGM</div>
+              <div>NA</div>
+            </div>
+            <div class="info-block margin-bottom-4">
+              <div>Win</div>
+              <div>NA</div>
+            </div>
+            <div class="info-block margin-bottom-4">
+              <div>Place</div>
+              <div>NA</div>
+            </div>
+            <div class="info-block margin-bottom-4">
+              <div>Show</div>
+              <div>NA</div>
+            </div>
+          </div>
+          <div class="block-header block-header-grey">Exotic Results</div>
+          <div class="badges-stack">
+            <div class="exotic-result-badge">
+              <div>$2.0</div>
+              <div>Extacta</div>
+              <div>4/1/7/1,2,3-8,11,12-16, 7</div>
+              <div>16.75</div>
+            </div>
+            <div class="exotic-result-badge">
+              <div>$2.0</div>
+              <div>Extacta</div>
+              <div>4/1/7/1,2,3-8,11,12-16, 7</div>
+              <div>16.75</div>
+            </div>
+            <div class="exotic-result-badge">
+              <div>$2.0</div>
+              <div>Extacta</div>
+              <div>4/1/7/1,2,3-8,11,12-16, 7</div>
+              <div>16.75</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
