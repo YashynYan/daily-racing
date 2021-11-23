@@ -36,10 +36,13 @@ main {
   height: 1000px;
 }
 
+<<<<<<< HEAD
 .side-image .track-the-race-block {
   display: none;
 }
 
+=======
+>>>>>>> 6da3bdb02fc68f1639824d5157bc1cd2db4aa20f
 .horse-img {
   position: absolute;
   top: 150px;
@@ -104,22 +107,39 @@ main {
   padding-right: 58px;
 }
 
+<<<<<<< HEAD
 .invalid-field {
   border: 1px solid #ff4d4d;
 }
 
 .error-field {
   color: #ff4d4d;
+=======
+.invalid-field{
+  border: 1px solid #FF4D4D;
+}
+
+.error-field{
+  color: #FF4D4D;
+>>>>>>> 6da3bdb02fc68f1639824d5157bc1cd2db4aa20f
   display: flex;
   align-items: center;
   margin-top: 8px;
 }
 
+<<<<<<< HEAD
 .hidden {
   display: none;
 }
 
 .error-field img {
+=======
+.hidden{
+  display: none
+}
+
+.error-field img{
+>>>>>>> 6da3bdb02fc68f1639824d5157bc1cd2db4aa20f
   margin-right: 8px;
 }
 
@@ -246,10 +266,18 @@ main {
   line-height: 18px;
 }
 
+<<<<<<< HEAD
 .dialog .dialog-window .dialog-form-block .dialog-form .submit-button {
   margin-top: 24px;
 }
 
+=======
+.dialog .dialog-window .dialog-form-block .dialog-form .submit-button{
+  margin-top: 24px;
+}
+
+
+>>>>>>> 6da3bdb02fc68f1639824d5157bc1cd2db4aa20f
 .dialog
   .dialog-window
   .dialog-form-block
@@ -502,6 +530,7 @@ main {
     height: 570px;
   }
 
+<<<<<<< HEAD
   .side-image .track-the-race-block {
     display: block;
     position: absolute;
@@ -527,6 +556,8 @@ main {
     margin-left: 21px;
   }
 
+=======
+>>>>>>> 6da3bdb02fc68f1639824d5157bc1cd2db4aa20f
   main {
     display: flex;
     height: 100%;
@@ -627,6 +658,7 @@ main {
   footer .footer-text .info-text {
     width: 100%;
   }
+<<<<<<< HEAD
 
   .side-image .track-the-race-block {
     top: 60px;
@@ -635,4 +667,6 @@ main {
   .side-image .track-the-race-block :nth-child(n){
     font-size: 30px;
   }
+=======
+>>>>>>> 6da3bdb02fc68f1639824d5157bc1cd2db4aa20f
 }
