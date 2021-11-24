@@ -19,9 +19,11 @@
             <div class="enjoy-text">Enjoy the Races!</div>
           </div>
         </div>
-        <button onclick="handleDialogVisibility()" class="btn outline-danger">
-          Log Out
-        </button>
+        <a href="logout/">
+          <button onclick="handleDialogVisibility()" class="btn outline-danger">
+            Log Out
+          </button>
+        </a>
       </div>
     </header>
     <main>
@@ -53,9 +55,11 @@
       <div class="flex-grow-2">
         <div class="race-bar margin-bottom-8">
           <div id="race-name"></div>
-          <div id='current-date-race-bar'></div>
-          <select id='race-select'></select>
-          <div id="race-bar-mtp-block"></div>
+          <div class="race-details flex-row">
+            <div id='current-date-race-bar'></div>
+            <select id='race-select'></select>
+            <div id="race-bar-mtp-block"></div>
+        </div>
         </div>
         <div class="race-block margin-bottom-8">
           <div class="race-image">
@@ -65,11 +69,11 @@
             <div class="header">Race Summary</div>
             <div class="info-block">
               <div>Race Class:</div>
-              <div>NA</div>
+              <div id="race-class"></div>
             </div>
             <div class="info-block">
               <div>Race Value:</div>
-              <div>NA</div>
+              <div id="race-value"></div>
             </div>
             <div class="info-block">
               <div>Distance:</div>
@@ -77,30 +81,24 @@
             </div>
             <div class="info-block">
               <div>Age:</div>
-              <div>NA</div>
+              <div id="race-age"></div>
             </div>
             <div class="info-block">
               <div>Surface:</div>
-              <div>NA</div>
+              <div id='race-surface'></div>
             </div>
           </div>
         </div>
-        <table cellspacing="0">
+        <table cellspacing="0" style='border-spacing: 0 1px;'>
           <thead class="thead-with-margin">
             <tr>
-              <th>PGM</th>
-              <th>Horse</th>
-              <th>Post</th>
-              <th>Win Odds</th>
+              <th style="width: 120px;">PGM</th>
+              <th style="text-align: left; padding-left: 41px;">Horse</th>
+              <th style="width: 120px;">Post</th>
+              <th style="width: 120px;">Win Odds</th>
             </tr>
           </thead>
-          <tbody>
-            <tr class="rounded-badge">
-              <td>1</td>
-              <td>Lunar Hero</td>
-              <td>pp1</td>
-              <td><div class="wager">7</div></td>
-            </tr>
+          <tbody id="table-players-info">
           </tbody>
         </table>
       </div>
@@ -112,129 +110,17 @@
           <div class="yield-card">Progressive Win Yield:</div>
         </div>
         <div class="block-header block-header-grey">Suggested Wagers</div>
-        <div class="badges-stack margin-bottom-8">
-          <div class="suggested-wagers-card">
-            <div>1</div>
-            <div class="wager">7</div>
-          </div>
-          <div class="suggested-wagers-card">
-            <div>2</div>
-            <div class="wager">7</div>
-          </div>
-          <div class="suggested-wagers-card">
-            <div>5</div>
-            <div class="wager">7</div>
-          </div>
+        <div id="suggested-wagers-container" class="badges-stack margin-bottom-8">
+
         </div>
         <div>
-          <div class="block-header block-header-grey">Results</div>
-          <div class="rounded-badge flex-row margin-bottom-1">
-            <div class="horse-number flex-row">1</div>
-            <div class="flex-column">
-              <div>Horse</div>
-              <div>Fleetertan</div>
+          <div class="block-header block-header-grey margin-bottom-8">Results</div>
+            <div id="results-container">
             </div>
-          </div>
-          <div class="info-block-container margin-bottom-4">
-            <div class="info-block margin-bottom-4">
-              <div>PP</div>
-              <div>NA</div>
-            </div>
-            <div class="info-block margin-bottom-4">
-              <div>PGM</div>
-              <div>NA</div>
-            </div>
-            <div class="info-block margin-bottom-4">
-              <div>Win</div>
-              <div>NA</div>
-            </div>
-            <div class="info-block margin-bottom-4">
-              <div>Place</div>
-              <div>NA</div>
-            </div>
-            <div class="info-block margin-bottom-4">
-              <div>Show</div>
-              <div>NA</div>
-            </div>
-          </div>
-          <div class="rounded-badge flex-row margin-bottom-1">
-            <div class="horse-number flex-row">1</div>
-            <div class="flex-column">
-              <div>Horse</div>
-              <div>Fleetertan</div>
-            </div>
-          </div>
-          <div class="info-block-container margin-bottom-4">
-            <div class="info-block margin-bottom-4">
-              <div>PP</div>
-              <div>NA</div>
-            </div>
-            <div class="info-block margin-bottom-4">
-              <div>PGM</div>
-              <div>NA</div>
-            </div>
-            <div class="info-block margin-bottom-4">
-              <div>Win</div>
-              <div>NA</div>
-            </div>
-            <div class="info-block margin-bottom-4">
-              <div>Place</div>
-              <div>NA</div>
-            </div>
-            <div class="info-block margin-bottom-4">
-              <div>Show</div>
-              <div>NA</div>
-            </div>
-          </div>
-          <div class="rounded-badge flex-row margin-bottom-1">
-            <div class="horse-number flex-row">1</div>
-            <div class="flex-column">
-              <div>Horse</div>
-              <div>Fleetertan</div>
-            </div>
-          </div>
-          <div class="info-block-container margin-bottom-8">
-            <div class="info-block margin-bottom-4">
-              <div>PP</div>
-              <div>NA</div>
-            </div>
-            <div class="info-block margin-bottom-4">
-              <div>PGM</div>
-              <div>NA</div>
-            </div>
-            <div class="info-block margin-bottom-4">
-              <div>Win</div>
-              <div>NA</div>
-            </div>
-            <div class="info-block margin-bottom-4">
-              <div>Place</div>
-              <div>NA</div>
-            </div>
-            <div class="info-block margin-bottom-4">
-              <div>Show</div>
-              <div>NA</div>
-            </div>
-          </div>
-          <div class="block-header block-header-grey">Exotic Results</div>
-          <div class="badges-stack">
-            <div class="exotic-result-badge">
-              <div>$2.0</div>
-              <div>Extacta</div>
-              <div>4/1/7/1,2,3-8,11,12-16, 7</div>
-              <div>16.75</div>
-            </div>
-            <div class="exotic-result-badge">
-              <div>$2.0</div>
-              <div>Extacta</div>
-              <div>4/1/7/1,2,3-8,11,12-16, 7</div>
-              <div>16.75</div>
-            </div>
-            <div class="exotic-result-badge">
-              <div>$2.0</div>
-              <div>Extacta</div>
-              <div>4/1/7/1,2,3-8,11,12-16, 7</div>
-              <div>16.75</div>
-            </div>
+          
+          <div class="block-header block-header-grey margin-bottom-1">Exotic Results</div>
+          <div id="exotics-container" class="badges-stack">
+            
           </div>
         </div>
       </div>

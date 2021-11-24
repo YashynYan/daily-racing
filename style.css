@@ -171,11 +171,12 @@ main {
   flex-direction: row;
   justify-content: space-between;
 }
-.suggested-wagers-card :nth-child(1) {
+.suggested-wagers-card .flex-column:nth-child(n) {
   flex-grow: 3;
 }
-.suggested-wagers-card :nth-child(2) {
-  flex-grow: 1;
+.suggested-wagers-card .wager:nth-child(n) {
+  flex-grow: 4;
+  max-width: 100px;
 }
 
 .wager {
@@ -197,6 +198,10 @@ main {
   border-radius: 4px;
 }
 
+.margin-left-8 {
+  margin-left: 8px;
+}
+
 .flex-column {
   display: flex;
   flex-direction: column;
@@ -205,6 +210,36 @@ main {
 .flex-row {
   display: flex;
   flex-direction: row;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-left-center {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flex-jc-center {
+  justify-content: center;
+}
+
+.player-number {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  font-weight: 900;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  border-radius: 4px;
+  background: red;
+}
+
+.outline-number {
+  -webkit-text-stroke: 1px black;
 }
 
 .horse-number {
@@ -221,14 +256,14 @@ main {
   margin-bottom: 8px;
 }
 
-.badges-stack :nth-child(n) {
+/* .badges-stack :nth-child(n) {
   margin-bottom: 1px;
 }
 
 .badges-stack :nth-last-child() {
   margin-bottom: 0px;
   border-radius: 0px 0px 4px 4px;
-}
+} */
 
 .exotic-result-badge {
   padding: 12px;
@@ -274,14 +309,14 @@ main {
 
 .table-row {
   font-size: 14px;
-  line-height: 24px;  
+  line-height: 24px;
   color: #000639;
   cursor: pointer;
   background: #ffffff;
 }
 
-.selected-row{
-  background: #C4C4DD !important;
+.selected-row {
+  background: #c4c4dd !important;
 }
 
 .table-row td {
@@ -293,4 +328,50 @@ main {
 .table-row td:first-child {
   padding-left: 16px;
   padding-right: 0;
+}
+
+.pgm-circle {
+  background: #ff4d4d;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+.pgm-position {
+  align-self: flex-end;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  color: #828282;
+}
+
+.position-cell-horse-icon {
+  padding-right: 14px;
+  margin-right: 14px;
+  border-right: 1px solid #f0f0f0;
+}
+
+.position-cell {
+  padding: 10px 0;
+  /* vertical-align: middle; */
+}
+
+.race-details {
+  justify-content: space-between;
+  max-width: 280px;
+  width: 100%;
+}
+
+.horse-name-text {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 300;
+  color: #000639;
+}
+
+.win-odds-cell{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 16px;
 }
