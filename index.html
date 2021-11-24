@@ -25,37 +25,37 @@
       </div>
     </header>
     <main>
-      <div class="flex-grow-1">
+      <div class="flex-grow-1" style="max-width: 332px;">
         <div class="margin-bottom-8">
           <div class="block-header" id="current-date"></div>
-          <input type="text" />
+          <!-- <input type="text" /> -->
         </div>
-        <table  cellspacing="0">
-          <thead>
+        <table cellspacing="0" >
+          <thead>  
             <tr>
-              <th>Track</th>
-              <th>Race</th>
-              <th>MTP</th>
+              <th
+                class="tracks-table-header text-align-left"
+                style="padding-left: 16px; width: 50%"
+              >
+                Track
+              </th>
+              <th class="tracks-table-header">Race</th>
+              <th class="tracks-table-header">MTP</th>
+              <tr class="block-header" style="display: flex; width: 100%; max-width: 332px; border-radius: 0; justify-content: center;">
+                <td>Open For betting</td>
+              </tr>
             </tr>
           </thead>
-
-          <tbody id='races-table-body'>
-            <tr class="block-header">
-              <td></td>
-              <td style="padding: 12px;">Open for betting</td>
-              <td></td>
-            </tr>
-            <tr class="rounded-badge">
-              <td>Canada A-Wagga</td>
-              <td>9</td>
-              <td>Official</td>
-            </tr>
+          <tbody id="races-table-body" class="tracks-table-body"> 
           </tbody>
         </table>
       </div>
       <div class="flex-grow-2">
         <div class="race-bar margin-bottom-8">
-          <div>Australia Waga</div>
+          <div id="race-name"></div>
+          <div id='current-date-race-bar'></div>
+          <select id='race-select'></select>
+          <div id="race-bar-mtp-block"></div>
         </div>
         <div class="race-block margin-bottom-8">
           <div class="race-image">
@@ -73,7 +73,7 @@
             </div>
             <div class="info-block">
               <div>Distance:</div>
-              <div>NA</div>
+              <div id='race-distance'></div>
             </div>
             <div class="info-block">
               <div>Age:</div>
@@ -104,7 +104,7 @@
           </tbody>
         </table>
       </div>
-      <div class="flex-grow-1">
+      <div class="flex-grow-1"  style="max-width: 332px;">
         <div class="yield-block margin-bottom-8">
           <div class="block-header">Yields</div>
           <div class="yield-card">Win Yields:</div>
