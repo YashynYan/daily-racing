@@ -370,8 +370,15 @@ main {
   color: #000639;
 }
 
-.win-odds-cell{
+.win-odds-cell {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 16px;
+}
+
+.open-for-betting {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
 }
