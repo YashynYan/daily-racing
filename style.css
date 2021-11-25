@@ -187,6 +187,7 @@ main {
 .suggested-wagers-card .wager:nth-child(n) {
   flex-grow: 4;
   max-width: 100px;
+  width: 100%;
 }
 
 .wager {
@@ -240,6 +241,10 @@ main {
   justify-content: space-between;
 }
 
+.align-self-center {
+  align-self: center;
+}
+
 .player-number {
   width: 24px;
   height: 24px;
@@ -268,6 +273,9 @@ main {
 }
 .margin-bottom-8 {
   margin-bottom: 8px;
+}
+.margin-bottom-16 {
+  margin-bottom: 16px;
 }
 
 .badges-stack {
@@ -433,6 +441,24 @@ main {
   display: none;
 }
 
+.custom-logout-button {
+  line-height: 24px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.desktop-view {
+  display: block;
+}
+
+.mobile-view {
+  display: none;
+}
+
+.players-table-header-cell{
+  width: 120px;
+}
+
 @media screen and (max-width: 900px) {
   header {
     flex-direction: column;
@@ -441,6 +467,18 @@ main {
 
   header div:last-child {
     width: 100%;
+  }
+
+  .desktop-view {
+    display: none;
+  }
+  
+  .mobile-view {
+    display: block;
+  }
+
+  .players-table-header-cell{
+    width: 80px;
   }
 
   .left-bar {

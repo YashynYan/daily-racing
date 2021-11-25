@@ -19,8 +19,8 @@
             <div class="enjoy-text">Enjoy the Races!</div>
           </div>
         </div>
-        <a href="logout/">
-          <button onclick="handleDialogVisibility()" class="btn outline-danger">
+        <a class="align-self-center" href="logout/">
+          <button onclick="handleDialogVisibility()" class="btn outline-danger custom-logout-button">
             Log Out
           </button>
         </a>
@@ -62,6 +62,10 @@
           <div style="cursor: pointer;" onclick="changeSideBarVisibility('left-bar')">Tracks</div>
           <div style="cursor: pointer;" onclick="changeSideBarVisibility('right-bar')">Wager/Results</div>
         </div>
+        <div class="flex-column">
+        <div class="race-image mobile-view margin-bottom-16">
+          <img src="./assets/images/zzzzevs_3261-min-768x467 1 (1).svg" />
+        </div>
         <div class="race-bar margin-bottom-8">
           <div id="race-name"></div>
           <div class="race-details flex-row">
@@ -71,7 +75,7 @@
         </div>
         </div>
         <div class="race-block margin-bottom-8">
-          <div class="race-image">
+          <div class="race-image desktop-view">
             <img src="./assets/images/zzzzevs_3261-min-768x467 1 (1).svg" />
           </div>
           <div class="summary-details info-block-container">
@@ -98,13 +102,14 @@
             </div>
           </div>
         </div>
+      </div>
         <table cellspacing="0" style='border-spacing: 0 1px;'>
           <thead class="thead-with-margin">
             <tr>
-              <th style="width: 120px;">PGM</th>
+              <th class="players-table-header-cell">PGM</th>
               <th style="text-align: left; padding-left: 41px;">Horse</th>
-              <th style="width: 120px;">Post</th>
-              <th style="width: 120px;">Win Odds</th>
+              <th class="players-table-header-cell">Post</th>
+              <th class="players-table-header-cell">Win Odds</th>
             </tr>
           </thead>
           <tbody id="table-players-info">
