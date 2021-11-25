@@ -3,12 +3,11 @@ html {
 }
 
 body {
-
   background: #f9f9f9;
   height: 100%;
 }
 
-main{
+main {
   height: 100%;
   position: relative;
 }
@@ -271,6 +270,10 @@ main {
   margin-bottom: 8px;
 }
 
+.badges-stack {
+  overflow-wrap: break-word;
+}
+
 /* .badges-stack :nth-child(n) {
   margin-bottom: 1px;
 }
@@ -418,21 +421,25 @@ main {
   display: none;
 }
 
-.right-bar-mobile-header{
+.right-bar-mobile-header {
   display: none;
 }
 
-.close-left-bar{
+.close-left-bar {
+  display: none;
+}
+
+.hidden {
   display: none;
 }
 
 @media screen and (max-width: 900px) {
-  header{
+  header {
     flex-direction: column;
     padding: 8px 16px;
   }
 
-  header div:last-child{
+  header div:last-child {
     width: 100%;
   }
 
@@ -458,19 +465,19 @@ main {
     max-width: 100%;
   }
 
-  .right-bar-mobile-header{
+  .right-bar-mobile-header {
     display: flex;
     background: #ffffff;
     justify-content: space-between;
     padding: 16px 14px;
   }
 
-  .left-bar-mobile-header{
+  .left-bar-mobile-header {
     display: flex;
     justify-content: space-between;
   }
 
-  .close-left-bar{
+  .close-left-bar {
     display: block;
     padding-right: 22px;
     cursor: pointer;
@@ -501,11 +508,11 @@ main {
     display: block;
   }
 
-  .race-block{
+  .race-block {
     flex-direction: column;
   }
 
-  .race-image{
+  .race-image {
     align-self: center;
   }
 }

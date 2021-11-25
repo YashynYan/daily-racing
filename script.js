@@ -426,8 +426,15 @@ function populateSuggestedWagers(selection) {
 
 function changeSideBarVisibility(barId) {
   const sideBar = document.getElementById(barId);
+  const footer = document.getElementsByTagName("footer")[0];
+  const openBar = () => {
+    sideBar.classList.add("visible");
+    footer.classList.add("hidden");
+  };
+  const closeBar = () => {
+    sideBar.classList.remove("visible");
+    footer.classList.remove("hidden");
+  };
 
-  sideBar.classList.contains("visible")
-    ? sideBar.classList.remove("visible")
-    : sideBar.classList.add("visible");
+  sideBar.classList.contains("visible") ? closeBar() : openBar();
 }
