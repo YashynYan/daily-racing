@@ -277,6 +277,14 @@ main {
   color: #000639;
   align-items: center;
 }
+
+.tracks-table-header {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+}
+
 .tracks-table-body .table-row:nth-of-type(2n + 2) {
   background: #f6f8fc;
 }
