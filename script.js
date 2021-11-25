@@ -37,7 +37,7 @@ async function getTrackList() {
         setSelectedTrack(selectedTrack.trackName);
       }
     });
-  console.log(selectedTrack, tracks);
+  // console.log(selectedTrack, tracks);
 
   setTimeout(() => {
     getTrackList();
@@ -73,7 +73,9 @@ function populateTracksTable(tracks) {
 
 function setSelectedTrack(selectedTrackName) {
   const previousTrack = selectedTrack;
+  // console.log(previousTrack, selectedTrackName)
   selectedTrack = tracks.find((item) => item.trackName === selectedTrackName);
+  // console.log(selectedTrack)
   document.getElementById("race-name").innerText = selectedTrack.trackName;
 
   document.getElementById("races-table-body").childNodes.forEach((child) => {
@@ -99,6 +101,7 @@ function setSelectedTrack(selectedTrackName) {
     const option = document.createElement("option");
     option.value = race.raceName.replace("Race ", "");
     option.innerText = race.raceName;
+
     if (
       selectedRace !== null &&
       previousTrack.trackName === selectedTrackName
@@ -113,7 +116,7 @@ function setSelectedTrack(selectedTrackName) {
   });
   const mtpBlock = document.getElementById("race-bar-mtp-block");
   mtpBlock.innerText = selectedTrack.raceTime;
-  fetchRaceDetails(selectedTrack.currentRace);
+  fetchRaceDetails(selectedRace === null || previousTrack.trackName !== selectedTrackName? selectedTrack.currentRace: selectedRace.raceNumber);
 }
 
 async function fetchRaceDetails(raceNumber) {
@@ -130,7 +133,7 @@ async function fetchRaceDetails(raceNumber) {
 function setSelectedRace(race) {
   selectedRace = race;
 
-  console.log(race);
+  // console.log(race);
   document.getElementById("race-distance").innerText = race.distance || "NA";
   document.getElementById("race-surface").innerText =
     race.surfaceConditions || "NA";
@@ -141,10 +144,10 @@ function setSelectedRace(race) {
 
   populatePlayersTable(race.playerInfo);
   populateResults(
-    race.result.filter((item) => !item[0].includes("$") && item[0] !== " ")
+    race?.result?.filter((item) => !item[0].includes("$") && item[0] !== " ")
   );
   populateExoticResults(
-    race.result.filter((item) => item[0].includes("$") && item[0] !== " ")
+    race?.result?.filter((item) => item[0].includes("$") && item[0] !== " ")
   );
   populateSuggestedWagers(race.selection);
 }
@@ -153,7 +156,7 @@ function populatePlayersTable(players) {
   const playersTable = document.getElementById("table-players-info");
   playersTable.innerHTML = "";
 
-  players.forEach((item) => {
+  players?.forEach((item) => {
     const tableRow = document.createElement("tr");
     tableRow.className = "rounded-badge";
 
@@ -223,7 +226,7 @@ function populatePlayersTable(players) {
 function populateResults(results) {
   const resultsContainer = document.getElementById("results-container");
   resultsContainer.innerHTML = "";
-  results.forEach((result, index) => {
+  results?.forEach((result, index) => {
     const pp = result[0];
     const pgm = result[1];
     const horseName = result[2];
@@ -348,7 +351,7 @@ function populateExoticResults(exoticResults) {
   const exoticResultsContainer = document.getElementById("exotics-container");
   exoticResultsContainer.innerHTML = "";
 
-  exoticResults.forEach((result) => {
+  exoticResults?.forEach((result) => {
     const firstCellValue = result[0];
     const secondCellValue = result[1];
     const thirdCellValue = result[2];
@@ -378,7 +381,7 @@ function populateExoticResults(exoticResults) {
 function populateSuggestedWagers(selection) {
   const wageContainer = document.getElementById("suggested-wagers-container");
   wageContainer.innerHTML = "";
-  selection.forEach((item) => {
+  selection?.forEach((item) => {
     const wagerCard = document.createElement("div");
     wagerCard.className = "suggested-wagers-card";
 
