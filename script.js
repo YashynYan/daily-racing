@@ -72,6 +72,7 @@ function populateTracksTable(tracks) {
 }
 
 function setSelectedTrack(selectedTrackName) {
+  const previousTrack = selectedTrack;
   selectedTrack = tracks.find((item) => item.trackName === selectedTrackName);
   document.getElementById("race-name").innerText = selectedTrack.trackName;
 
@@ -98,7 +99,14 @@ function setSelectedTrack(selectedTrackName) {
     const option = document.createElement("option");
     option.value = race.raceName.replace("Race ", "");
     option.innerText = race.raceName;
-    if (option.value === selectedTrack.currentRace) {
+    if (
+      selectedRace !== null &&
+      previousTrack.trackName === selectedTrackName
+    ) {
+      selectedRace.raceNumber === option.value
+        ? (option.selected = true)
+        : null;
+    } else if (option.value === selectedTrack.currentRace) {
       option.selected = true;
     }
     raceSelect.append(option);
@@ -213,7 +221,6 @@ function populatePlayersTable(players) {
 }
 
 function populateResults(results) {
-  console.log(results);
   const resultsContainer = document.getElementById("results-container");
   resultsContainer.innerHTML = "";
   results.forEach((result, index) => {
@@ -227,8 +234,6 @@ function populateResults(results) {
     const playerInfo = selectedRace.playerInfo.find(
       (player) => player.name === horseName
     );
-
-    console.log(playerInfo);
 
     /**Generating header */
     const resultHeader = document.createElement("div");
@@ -417,4 +422,12 @@ function populateSuggestedWagers(selection) {
 
   const sugestedWagerCard = document.createElement("div");
   sugestedWagerCard.className = "suggested-wagers-card";
+}
+
+function changeSideBarVisibility(barId) {
+  const sideBar = document.getElementById(barId);
+
+  sideBar.classList.contains("visible")
+    ? sideBar.classList.remove("visible")
+    : sideBar.classList.add("visible");
 }

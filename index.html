@@ -11,8 +11,8 @@
   <body>
     <header>
       <img src="../assets/images/logo.svg" />
-      <div class="flex-row">
-        <div class="flex-row">
+      <div class="flex-row flex-jc-space-between">
+        <div class="flex-row" >
           <div class="avatar-block"></div>
           <div class="welcome-block">
             <div class="user-name">Welcome Admin</div>
@@ -27,9 +27,12 @@
       </div>
     </header>
     <main>
-      <div class="flex-grow-1" style="max-width: 332px;">
+      <div id="left-bar" class="left-bar flex-grow-1">
         <div class="margin-bottom-8">
-          <div class="block-header" id="current-date"></div>
+          <div class="block-header left-bar-mobile-header" >
+            <div id="current-date"></div>
+            <div class="close-left-bar" onclick="changeSideBarVisibility('left-bar')"><img src="./assets/icons/grey-close-icon.svg"></div>
+          </div>
           <!-- <input type="text" /> -->
         </div>
         <table cellspacing="0" >
@@ -54,7 +57,11 @@
           </tbody>
         </table>
       </div>
-      <div class="flex-grow-2">
+      <div class="central-bar flex-grow-2">
+        <div class="mobile-sidebar-switcher">
+          <div style="cursor: pointer;" onclick="changeSideBarVisibility('left-bar')">Tracks</div>
+          <div style="cursor: pointer;" onclick="changeSideBarVisibility('right-bar')">Wager/Results</div>
+        </div>
         <div class="race-bar margin-bottom-8">
           <div id="race-name"></div>
           <div class="race-details flex-row">
@@ -104,7 +111,11 @@
           </tbody>
         </table>
       </div>
-      <div class="flex-grow-1"  style="max-width: 332px;">
+      <div id="right-bar" class="right-bar flex-grow-1">
+        <div class="right-bar-mobile-header margin-bottom-8">
+          <div>Wager/Results</div>
+          <div style="cursor: pointer;" onclick="changeSideBarVisibility('right-bar')"><img src="./assets/icons/grey-close-icon.svg"></div>
+        </div>
         <div class="yield-block margin-bottom-8">
           <div class="block-header">Yields</div>
           <div class="yield-card">Win Yields:</div>
@@ -127,6 +138,22 @@
         </div>
       </div>
     </main>
+    <footer>
+      <div class="horse-racing-text">
+        <div>HORSE RACING</div>
+        <div>HORSE RACING</div>
+      </div>
+      <div class="footer-text">
+        <img src="../assets/images/logo.svg" width="180" height="57" />
+        <p class="info-text">
+          Horse racing is one of the most popular betting products on a
+          sportsbook and in shop, with billions bet on it each year.
+        </p>
+        <p class="copyright">
+          © 2021 dailyracingbets.com. All rights reserved.
+        </p>
+      </div>
+    </footer>
     <script src="./script.js"></script>
   </body>
 </html>

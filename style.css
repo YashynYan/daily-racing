@@ -1,6 +1,16 @@
+html {
+  height: fit-content;
+}
+
 body {
+
   background: #f9f9f9;
   height: 100%;
+}
+
+main{
+  height: 100%;
+  position: relative;
 }
 
 table {
@@ -30,6 +40,7 @@ th {
 
 .avatar-block {
   width: 48px;
+  min-width: 48px;
   height: 48px;
   background: #4d4dff;
   border-radius: 50%;
@@ -226,6 +237,10 @@ main {
   justify-content: center;
 }
 
+.flex-jc-space-between {
+  justify-content: space-between;
+}
+
 .player-number {
   width: 24px;
   height: 24px;
@@ -389,4 +404,108 @@ main {
   font-size: 16px;
   line-height: 24px;
   color: #ffffff;
+}
+
+.left-bar {
+  max-width: 332px;
+}
+
+.right-bar {
+  max-width: 332px;
+}
+
+.mobile-sidebar-switcher {
+  display: none;
+}
+
+.right-bar-mobile-header{
+  display: none;
+}
+
+.close-left-bar{
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  header{
+    flex-direction: column;
+    padding: 8px 16px;
+  }
+
+  header div:last-child{
+    width: 100%;
+  }
+
+  .left-bar {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #e5e5e5;
+    height: 100%;
+    max-width: 100%;
+  }
+
+  .right-bar {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 0;
+    background: #e5e5e5;
+    height: 100%;
+    max-width: 100%;
+  }
+
+  .right-bar-mobile-header{
+    display: flex;
+    background: #ffffff;
+    justify-content: space-between;
+    padding: 16px 14px;
+  }
+
+  .left-bar-mobile-header{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .close-left-bar{
+    display: block;
+    padding-right: 22px;
+    cursor: pointer;
+  }
+
+  .mobile-sidebar-switcher {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    background: #ffffff;
+  }
+
+  .mobile-sidebar-switcher div:nth-child(n) {
+    padding-top: 8px;
+    padding-bottom: 12px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .mobile-sidebar-switcher div:nth-child(1) {
+    border-right: 1px solid #f0f0f0;
+  }
+
+  .visible {
+    display: block;
+  }
+
+  .race-block{
+    flex-direction: column;
+  }
+
+  .race-image{
+    align-self: center;
+  }
 }

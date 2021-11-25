@@ -229,7 +229,7 @@ footer .footer-text .info-text {
 
 @media screen and (max-width: 500px) {
   footer .horse-racing-text {
-    font-size: 30px;
+    font-size: 40px;
     line-height: 46px;
   }
 }
@@ -246,7 +246,7 @@ footer .footer-text .info-text {
 
 @media screen and (max-width: 350px) {
   footer .horse-racing-text {
-    font-size: 25px;
+    font-size: 36px;
     line-height: 46px;
   }
 }
