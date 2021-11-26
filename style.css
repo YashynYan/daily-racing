@@ -521,6 +521,8 @@ main {
 .mtp-block {
   border-radius: 4px;
   padding: 8px 12px;
+  background-color: #4D4DFF;
+  color: #ffffff;
 }
 
 .mtp-block-warning {
@@ -531,6 +533,21 @@ main {
 
 .warning-text-color {
   color: #ff4d4d;
+}
+
+#race-name {
+}
+
+#current-date-race-bar {
+  justify-self: flex-end;
+}
+
+#race-select {
+  justify-self: flex-end;
+}
+
+#race-bar-mtp-block {
+  justify-self: flex-end;
 }
 
 @media screen and (max-width: 900px) {
