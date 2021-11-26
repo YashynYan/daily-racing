@@ -7,6 +7,11 @@ body {
   height: 100%;
 }
 
+header {
+padding-top: 0;
+padding-bottom: 0;
+}
+
 main {
   height: 100%;
   position: relative;
@@ -282,7 +287,7 @@ main {
 }
 
 .outline-number {
-  -webkit-text-stroke: 1px black;
+  -webkit-text-stroke: 0.5px black;
 }
 
 .horse-number {
@@ -420,9 +425,7 @@ main {
 }
 
 .win-odds-cell {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 16px;
+  padding: 10px 16px;
 }
 
 .open-for-betting {
@@ -532,6 +535,7 @@ main {
   font-size: 14px;
   line-height: 16px;
   color: #000639;
+  padding-left: 16px;
 }
 
 .mtp-block {
@@ -573,7 +577,7 @@ main {
 }
 
 .results{
-  font-weight: 400;
+  font-weight: 300;
 }
 
 @media screen and (max-width: 900px) {

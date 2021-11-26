@@ -115,7 +115,7 @@ function populateTracksTable(tracks) {
       const mtpCell = document.createElement("td");
       mtpCell.className = "text-align-center";
       mtpCell.innerText = item.raceTime || "NA";
-      if (Number(item?.raceTime?.replace(" MTP", "")) <= 5 || selectedTrack?.raceTime.toLowerCase() === "off") {
+      if (Number(item?.raceTime?.replace(" MTP", "")) <= 5) {
         mtpCell.classList.add("warning-text-color");
       }
 
@@ -174,18 +174,7 @@ function setSelectedTrack(selectedTrackName) {
     }
     raceSelect.append(option);
   });
-  const mtpBlock = document.getElementById("race-bar-mtp-block");
-  mtpBlock.innerText = selectedTrack?.raceTime || 'NA';
-  mtpBlock.className = "mtp-block";
-  if(selectedTrack?.raceTime?.toLowerCase() === "off" ||  !selectedTrack?.raceTime){
-    mtpBlock.style.width = "50px"
-    mtpBlock.style.textAlign = "center"
-  } else {
-    mtpBlock.style.width = "unset"
-  }
-  if (Number(selectedTrack?.raceTime?.replace(" MTP", "")) <= 5 || selectedTrack?.raceTime.toLowerCase() === "off") {
-    mtpBlock.classList.add("mtp-block-warning");
-  }
+
   fetchRaceDetails(
     selectedRace === null || previousTrack.trackName !== selectedTrackName
       ? selectedTrack.currentRace
@@ -214,6 +203,27 @@ function setSelectedRace(race) {
   document.getElementById("race-value").innerText = race.purse || "NA";
   document.getElementById("race-class").innerText =
     race.raceDescription || "NA";
+  const mtpBlock = document.getElementById("race-bar-mtp-block");
+  mtpBlock.innerText = `${race?.mtp} MTP` || "NA";
+  mtpBlock.className = "mtp-block";
+  if (
+    selectedTrack?.raceTime?.toLowerCase() === "off" ||
+    !selectedTrack?.raceTime
+  ) {
+    mtpBlock.style.width = "50px";
+    mtpBlock.style.textAlign = "center";
+  } else {
+    mtpBlock.style.width = "unset";
+  }
+  if (
+    Number(selectedRace?.mtp) <= 5 ||
+    selectedTrack?.raceTime.toLowerCase() === "off"
+  ) {
+    mtpBlock.classList.add("mtp-block-warning");
+  } else {
+    console.log("remove");
+    mtpBlock.classList.remove("mtp-block-warning");
+  }
 
   populatePlayersTable(race.playerInfo);
   populateResults(
@@ -254,10 +264,10 @@ function populatePlayersTable(players) {
     if (item.color.background === "#ffffff") {
       playerNumber.style.border = "1px solid #636363";
     }
-    if (item.color.font === "white") {
+    if (item.color.font === "white" || item.programNumber === '4') {
       playerNumber.classList.add("outline-number");
     }
-    playerNumber.style.color = item.color.font;
+    playerNumber.style.color = item.programNumber === '4'? 'white': item.color.font;
     playerNumber.innerText = item.programNumber;
 
     const numberWithCircle = document.createElement("div");
@@ -378,7 +388,7 @@ function populateResults(results) {
     ppInfoRow.append(ppLabel, ppValue);
 
     const pgmInfoRow = document.createElement("div");
-    pgmInfoRow.className = "info-block margin-bottom-4";
+    pgmInfoRow.className = "info-block results margin-bottom-4";
 
     const pgmLabel = document.createElement("div");
     pgmLabel.innerText = "PGM";
@@ -388,7 +398,7 @@ function populateResults(results) {
     pgmInfoRow.append(pgmLabel, pgmValue);
 
     const winInfoRow = document.createElement("div");
-    winInfoRow.className = "info-block margin-bottom-4";
+    winInfoRow.className = "info-block results margin-bottom-4";
 
     const winLabel = document.createElement("div");
     winLabel.innerText = "Win";
@@ -398,7 +408,7 @@ function populateResults(results) {
     winInfoRow.append(winLabel, winValue);
 
     const placeInfoRow = document.createElement("div");
-    placeInfoRow.className = "info-block margin-bottom-4";
+    placeInfoRow.className = "info-block results margin-bottom-4";
 
     const placeLabel = document.createElement("div");
     placeLabel.innerText = "Place";
@@ -408,7 +418,7 @@ function populateResults(results) {
     placeInfoRow.append(placeLabel, placeValue);
 
     const showInfoRow = document.createElement("div");
-    showInfoRow.className = "info-block margin-bottom-4";
+    showInfoRow.className = "info-block results margin-bottom-4";
 
     const showLabel = document.createElement("div");
     showLabel.innerText = "Show";
@@ -442,7 +452,7 @@ function populateExoticResults(exoticResults) {
     exoticResultBadge.className = "exotic-result-badge";
 
     const firstCell = document.createElement("div");
-    firstCell.style.width = "25%";
+    firstCell.style.width = "fit-content";
     firstCell.innerText = firstCellValue;
     const secondCell = document.createElement("div");
     secondCell.style.width = "25%";
@@ -451,7 +461,7 @@ function populateExoticResults(exoticResults) {
     thirdCell.style.width = "25%";
     thirdCell.innerText = thirdCellValue;
     const fourthCell = document.createElement("div");
-    fourthCell.style.width = "25%";
+    fourthCell.style.width = "fit-content";
     fourthCell.innerText = fourthCellValue;
 
     exoticResultBadge.append(firstCell, secondCell, thirdCell, fourthCell);
