@@ -1,3 +1,15 @@
+@font-face {
+  font-family: Geomanist;
+  src: url('./assets/fonts/Geomanist-Light.ttf');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: Geomanist;
+  src: url('./assets/fonts/Geomanist-Book.ttf');
+  font-weight: 400;
+}
+
 html {
   height: fit-content;
 }
@@ -537,6 +549,11 @@ main {
   display: none;
 }
 
+.players-table-header-cell-font{
+  font-family: Geomanist;
+  font-weight: 400;
+}
+
 .players-table-header-cell {
   width: 120px;
 }
@@ -580,6 +597,7 @@ main {
   white-space: nowrap;
   width: fit-content;
   margin-right: 40px;
+  min-width: 76px;
 }
 
 #race-bar-mtp-block {
@@ -589,6 +607,7 @@ main {
 
 .results {
   font-weight: 300;
+  font-size: 14px;
 }
 
 @media screen and (max-width: 900px) {

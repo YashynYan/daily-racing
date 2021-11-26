@@ -106,11 +106,9 @@ function populateTracksTable(tracks) {
       trackCell.append(trackBlock);
 
       const raceCell = document.createElement("td");
-      raceCell.className = "text-align-center";
       raceCell.innerText = item.currentRace || "NA";
 
       const mtpCell = document.createElement("td");
-      mtpCell.className = "text-align-center";
       mtpCell.innerText = item.raceTime || "NA";
       if (Number(item?.raceTime?.replace(" MTP", "")) <= 5) {
         mtpCell.classList.add("warning-text-color");
@@ -192,7 +190,7 @@ async function fetchRaceDetails(raceNumber) {
 
 function setSelectedRace(race) {
   selectedRace = race;
-
+  console.log(race, selectedTrack);
   document.getElementById("race-distance").innerText = race.distance || "NA";
   document.getElementById("race-surface").innerText =
     race.surfaceConditions || "NA";
@@ -201,7 +199,14 @@ function setSelectedRace(race) {
   document.getElementById("race-class").innerText =
     race.raceDescription || "NA";
   const mtpBlock = document.getElementById("race-bar-mtp-block");
-  mtpBlock.innerText = `${race?.mtp} MTP` || "NA";
+  mtpBlock.innerText =
+    `${
+      race.name === selectedTrack.trackName &&
+      race.raceNumber === selectedTrack.currentRace &&
+      selectedTrack.raceTime === "Off"
+        ? "Off"
+        : race?.mtp + " MTP"
+    }` || "NA";
   mtpBlock.className = "mtp-block";
   if (
     selectedTrack?.raceTime?.toLowerCase() === "off" ||
@@ -260,10 +265,11 @@ function populatePlayersTable(players) {
     if (item.color.background === "#ffffff") {
       playerNumber.style.border = "1px solid #636363";
     }
-    if (item.color.font === "white" || item.programNumber === '4') {
+    if (item.color.font === "white" || item.programNumber === "4") {
       playerNumber.classList.add("outline-number");
     }
-    playerNumber.style.color = item.programNumber === '4'? 'white': item.color.font;
+    playerNumber.style.color =
+      item.programNumber === "4" ? "white" : item.color.font;
     playerNumber.innerText = item.programNumber;
 
     const numberWithCircle = document.createElement("div");
@@ -273,7 +279,7 @@ function populatePlayersTable(players) {
     const position = document.createElement("div");
     position.innerText = item.postPosition;
     position.className = "pgm-position";
-    position.style.paddingRight = '1px' ;
+    position.style.paddingRight = "1px";
 
     numberBlock.append(numberWithCircle, position);
     cellBlock.append(numberBlock);
@@ -287,10 +293,22 @@ function populatePlayersTable(players) {
     /**Post cell creation */
     const postCell = document.createElement("td");
     postCell.className = "position-cell";
+
+    const postCellBlock = document.createElement("div");
+    postCellBlock.className = "flex-row";
+    postCellBlock.style.height = "36px";
+
+    const horseIconBlock = document.createElement("div");
+    horseIconBlock.className =
+      "position-cell-horse-icon flex-column flex-jc-center";
     const horseIcon = document.createElement("img");
     horseIcon.src = "./assets/icons/horse-icon.svg";
-    horseIcon.className = "position-cell-horse-icon";
-    postCell.append(horseIcon, item.postPosition);
+    horseIconBlock.append(horseIcon);
+    const positionBlock = document.createElement("div");
+    positionBlock.innerText = item.postPosition;
+    positionBlock.className = "flex-column flex-jc-center";
+    postCellBlock.append(horseIconBlock, positionBlock);
+    postCell.append(postCellBlock);
     // postCell.innerText = item.postPosition;
 
     /**Win Odds cell creation */
