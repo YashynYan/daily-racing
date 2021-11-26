@@ -75,7 +75,7 @@
           <div id="race-name"></div>
           <div class="race-details flex-row flex-ai-center">
             <div id='current-date-race-bar'></div>
-            <select id='race-select'></select>
+            <select id='race-select' class="race-select"></select>
             <div id="race-bar-mtp-block" ></div>
           </div>
         </div>
@@ -128,9 +128,9 @@
         </div>
         <div class="yield-block margin-bottom-8">
           <div class="block-header">Yields</div>
-          <div class="yield-card">Win Yields:</div>
-          <div class="yield-card">Total Win Yield:</div>
-          <div class="yield-card">Progressive Win Yield:</div>
+          <div class="yield-card" id="win-yields"><img src="./assets/icons/lightning.svg"> Win Yields: </div>
+          <div class="yield-card" id="total-win-yields"><img src="./assets/icons/lightning.svg">Total Win Yield: </div>
+          <div class="yield-card" id="progressive-win-yield"><img src="./assets/icons/lightning.svg">Progressive Win Yield: </div>
         </div>
         <div class="block-header block-header-grey">Suggested Wagers</div>
         <div id="suggested-wagers-container" class="badges-stack margin-bottom-8">

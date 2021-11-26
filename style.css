@@ -48,7 +48,7 @@ th {
 }
 
 .avatar {
-  width: 26px;
+  width: 26px !important;
   min-width: 26px;
   height: 26px;
   background: #ffffff;
@@ -174,6 +174,11 @@ main {
   font-size: 14px;
   line-height: 24px;
   color: #636363;
+  display: flex;
+}
+
+.yield-card img{
+  margin-right: 8px;
 }
 
 .yield-block :nth-child(n + 1) {
@@ -466,6 +471,22 @@ main {
   border-radius: 4px;
   top: 8px;
   left: 16px;
+}
+
+.race-select {
+  border: 0;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000639;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("./assets/icons/grey-icon.svg");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 6px;
+  padding-right: 25px;
+  width: 80px;
 }
 
 .right-bar {
