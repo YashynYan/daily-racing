@@ -190,11 +190,11 @@ footer .horse-racing-text {
 
 footer .horse-racing-text :nth-child(2) {
   position: absolute;
-  -webkit-text-stroke: 2px #e0e7ff;
+  -webkit-text-stroke: 1px #e0e7ff;
   font-weight: 900;
   color: transparent;
-  margin-left: 5px;
-  margin-top: 3px;
+  margin-left: -7px;
+  margin-top: 4px;
 }
 footer .horse-racing-text :nth-child(1) {
   color: #f0f3ff;
