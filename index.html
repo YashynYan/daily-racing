@@ -10,10 +10,12 @@
   </head>
   <body>
     <header>
-      <img src="../assets/images/logo.svg" />
+      <img src="./assets/images/logo.svg" />
       <div class="flex-row flex-jc-space-between">
-        <div class="flex-row" >
-          <div class="avatar-block"></div>
+        <div class="flex-row  flex-ai-center flex-jc-center" >
+          <div class="avatar-block flex-ai-center flex-jc-center">
+            <div class="avatar flex-ai-center flex-jc-center"><img src='./assets/icons/avatar.svg'></div>
+          </div>
           <div class="welcome-block">
             <div class="user-name">Welcome Admin</div>
             <div class="enjoy-text">Enjoy the Races!</div>
@@ -33,7 +35,10 @@
             <div id="current-date"></div>
             <div class="close-left-bar" onclick="changeSideBarVisibility('left-bar')"><img src="./assets/icons/grey-close-icon.svg"></div>
           </div>
-          <!-- <input type="text" /> -->
+          <div class="search-block">
+            <input type="text" class="search-bar" id="search-bar" placeholder="Search for tracks" />
+            <div class="search-icon"><img src="./assets/icons/magnifying-glass.svg"></div>
+          </div>
         </div>
         <table cellspacing="0" >
           <thead>  
@@ -66,13 +71,13 @@
         <div class="race-image mobile-view margin-bottom-16">
           <img src="./assets/images/zzzzevs_3261-min-768x467 1 (1).svg" />
         </div>
-        <div class="race-bar margin-bottom-8">
+        <div class="race-bar flex-ai-center margin-bottom-8">
           <div id="race-name"></div>
-          <div class="race-details flex-row">
+          <div class="race-details flex-row flex-ai-center">
             <div id='current-date-race-bar'></div>
             <select id='race-select'></select>
-            <div id="race-bar-mtp-block"></div>
-        </div>
+            <div id="race-bar-mtp-block" ></div>
+          </div>
         </div>
         <div class="race-block margin-bottom-8">
           <div class="race-image desktop-view">

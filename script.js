@@ -2,6 +2,13 @@ const API_ADDRESS = "http://52.13.73.117:8000/api/";
 tracks = [];
 selectedTrack = null;
 selectedRace = null;
+searchQuery = ""
+
+const bulletColors = {
+  red: "#FF4D4D",
+  green: "#27AE60",
+  yellow: "#F2C94C",
+};
 
 window.onload = () => {
   const currentDateBlock = document.getElementById("current-date");
@@ -37,7 +44,6 @@ async function getTrackList() {
         setSelectedTrack(selectedTrack.trackName);
       }
     });
-  // console.log(selectedTrack, tracks);
 
   setTimeout(() => {
     getTrackList();
@@ -47,7 +53,7 @@ async function getTrackList() {
 function populateTracksTable(tracks) {
   const raceTableBody = document.getElementById("races-table-body");
   raceTableBody.innerHTML = "";
-  tracks.forEach((item) => {
+  tracks.filter(track => track.trackName.includes(searchQuery)).forEach((item) => {
     const tableRow = document.createElement("tr");
     tableRow.className = "table-row";
     tableRow.onclick = (e) => {
@@ -73,9 +79,7 @@ function populateTracksTable(tracks) {
 
 function setSelectedTrack(selectedTrackName) {
   const previousTrack = selectedTrack;
-  // console.log(previousTrack, selectedTrackName)
   selectedTrack = tracks.find((item) => item.trackName === selectedTrackName);
-  // console.log(selectedTrack)
   document.getElementById("race-name").innerText = selectedTrack.trackName;
 
   document.getElementById("races-table-body").childNodes.forEach((child) => {
@@ -116,7 +120,15 @@ function setSelectedTrack(selectedTrackName) {
   });
   const mtpBlock = document.getElementById("race-bar-mtp-block");
   mtpBlock.innerText = selectedTrack.raceTime;
-  fetchRaceDetails(selectedRace === null || previousTrack.trackName !== selectedTrackName? selectedTrack.currentRace: selectedRace.raceNumber);
+  mtpBlock.className = "mtp-block";
+  if (Number(selectedTrack.raceTime.replace(" MTP", "")) <= 5) {
+    mtpBlock.classList.add("mtp-block-warning");
+  }
+  fetchRaceDetails(
+    selectedRace === null || previousTrack.trackName !== selectedTrackName
+      ? selectedTrack.currentRace
+      : selectedRace.raceNumber
+  );
 }
 
 async function fetchRaceDetails(raceNumber) {
@@ -133,7 +145,6 @@ async function fetchRaceDetails(raceNumber) {
 function setSelectedRace(race) {
   selectedRace = race;
 
-  // console.log(race);
   document.getElementById("race-distance").innerText = race.distance || "NA";
   document.getElementById("race-surface").innerText =
     race.surfaceConditions || "NA";
@@ -159,6 +170,7 @@ function populatePlayersTable(players) {
   players?.forEach((item) => {
     const tableRow = document.createElement("tr");
     tableRow.className = "rounded-badge";
+    tableRow.style.paddingLeft = "0";
 
     /** Number cell creation */
     const numberCell = document.createElement("td");
@@ -169,6 +181,7 @@ function populatePlayersTable(players) {
 
     const numberBlock = document.createElement("div");
     numberBlock.className = "flex-column";
+    numberBlock.style.paddingRight = "12px";
 
     const pgmCircle = document.createElement("div");
     pgmCircle.className = "pgm-circle";
@@ -200,6 +213,7 @@ function populatePlayersTable(players) {
     /**Horse name cell creation */
     const horseCell = document.createElement("td");
     horseCell.innerText = item.name;
+    horseCell.className = "horse-table-cell";
 
     /**Post cell creation */
     const postCell = document.createElement("td");
@@ -215,6 +229,9 @@ function populatePlayersTable(players) {
     winOddsCell.className = "win-odds-cell";
     const oddBlock = document.createElement("div");
     oddBlock.className = "wager";
+    if (Number(item.odds) < 1) {
+      oddBlock.classList.add("mtp-block-warning");
+    }
     oddBlock.innerHTML = item.odds;
     winOddsCell.append(oddBlock);
 
@@ -383,7 +400,7 @@ function populateSuggestedWagers(selection) {
   wageContainer.innerHTML = "";
   selection?.forEach((item) => {
     const wagerCard = document.createElement("div");
-    wagerCard.className = "suggested-wagers-card";
+    wagerCard.className = "suggested-wagers-card margin-bottom-1";
 
     const playerInfo = selectedRace.playerInfo.find(
       (player) => player.programNumber === item.programNumber
@@ -395,7 +412,7 @@ function populateSuggestedWagers(selection) {
 
     const pgmCircle = document.createElement("div");
     pgmCircle.className = "pgm-circle";
-    pgmCircle.style.background = item.color[0];
+    pgmCircle.style.background = bulletColors[item.color[0]];
 
     const playerNumber = document.createElement("div");
     playerNumber.className = "player-number";
@@ -440,4 +457,15 @@ function changeSideBarVisibility(barId) {
   };
 
   sideBar.classList.contains("visible") ? closeBar() : openBar();
+}
+
+const searchBar = document.getElementById('search-bar')
+
+searchBar.addEventListener('input', handleSearch);
+
+function handleSearch(e) {
+  const {value} = e.target;
+  searchQuery = value.trim();
+  populateTracksTable(tracks)
+  setSelectedTrack(selectedTrack.trackName)
 }
