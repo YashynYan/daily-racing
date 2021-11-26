@@ -276,7 +276,7 @@ main {
   font-weight: 900;
   justify-content: center;
   align-items: center;
-  font-size: 21px;
+  font-size: 19px;
   border-radius: 4px;
   background: red;
 }
@@ -292,14 +292,21 @@ main {
 .margin-bottom-1 {
   margin-bottom: 1px;
 }
+
 .margin-bottom-4 {
   margin-bottom: 4px;
 }
+
 .margin-bottom-8 {
   margin-bottom: 8px;
 }
+
 .margin-bottom-16 {
   margin-bottom: 16px;
+}
+
+.margin-right-8 {
+  margin-right: 8px;
 }
 
 .badges-stack {

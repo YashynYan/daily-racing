@@ -2,12 +2,42 @@ const API_ADDRESS = "http://52.13.73.117:8000/api/";
 tracks = [];
 selectedTrack = null;
 selectedRace = null;
-searchQuery = ""
+searchQuery = "";
 
 const bulletColors = {
   red: "#FF4D4D",
   green: "#27AE60",
   yellow: "#F2C94C",
+};
+
+const countryCode = {
+  auc: "AU",
+  aus: "AU",
+  sar: "USA",
+  pim: "USA",
+  op: "USA",
+  mth: "USA",
+  lrc: "USA",
+  lrl: "USA",
+  kee: "USA",
+  haw: "USA",
+  fg: "USA",
+  dmr: "USA",
+  ap: "USA",
+  aqu: "USA",
+  tam: "USA",
+  ura: "JPN",
+  oi: "JPN",
+  bel: "USA",
+  cd: "USA",
+  sa: "USA",
+  wo: "CA",
+  hv: "HK",
+  mnr: "USA",
+  prx: "USA",
+  gp: "USA",
+  st: "HK",
+  fex: "CA",
 };
 
 window.onload = () => {
@@ -53,37 +83,60 @@ async function getTrackList() {
 function populateTracksTable(tracks) {
   const raceTableBody = document.getElementById("races-table-body");
   raceTableBody.innerHTML = "";
-  tracks.filter(track => track.trackName.toUpperCase().includes(searchQuery.toUpperCase())).forEach((item) => {
-    const tableRow = document.createElement("tr");
-    tableRow.className = "table-row";
-    tableRow.onclick = (e) => {
-      setSelectedTrack(item.trackName);
-    };
+  tracks
+    .filter((track) =>
+      track.trackName.toUpperCase().includes(searchQuery.toUpperCase())
+    )
+    .forEach((item) => {
+      const tableRow = document.createElement("tr");
+      tableRow.className = "table-row";
+      tableRow.onclick = (e) => {
+        setSelectedTrack(item.trackName);
+      };
 
-    const trackCell = document.createElement("td");
-    trackCell.innerText = item.trackName;
+      const trackCell = document.createElement("td");
+      const trackBlock = document.createElement("div");
+      trackBlock.className = "flex-row";
+      const countryImage = document.createElement("img");
+      countryCode[item.brisCode] === undefined
+        ? console.log(item.brisCode)
+        : null;
+      countryImage.src = `./assets/icons/flags/${countryCode[
+        item.brisCode
+      ]?.toLowerCase()}.svg`;
+      countryImage.className = "margin-right-8";
+      trackBlock.append(countryImage, item.trackName);
+      trackCell.append(trackBlock);
 
-    const raceCell = document.createElement("td");
-    raceCell.className = "text-align-center";
-    raceCell.innerText = item.currentRace || "NA";
+      const raceCell = document.createElement("td");
+      raceCell.className = "text-align-center";
+      raceCell.innerText = item.currentRace || "NA";
 
-    const mtpCell = document.createElement("td");
-    mtpCell.className = "text-align-center";
-    mtpCell.innerText = item.raceTime || "NA";
-    if(Number(item?.raceTime?.replace(" MTP", "")) <=5){
-      mtpCell.classList.add('warning-text-color')
-    }
+      const mtpCell = document.createElement("td");
+      mtpCell.className = "text-align-center";
+      mtpCell.innerText = item.raceTime || "NA";
+      if (Number(item?.raceTime?.replace(" MTP", "")) <= 5 || selectedTrack?.raceTime.toLowerCase() === "off") {
+        mtpCell.classList.add("warning-text-color");
+      }
 
-    tableRow.append(trackCell, raceCell, mtpCell);
+      tableRow.append(trackCell, raceCell, mtpCell);
 
-    raceTableBody.append(tableRow);
-  });
+      raceTableBody.append(tableRow);
+    });
 }
 
 function setSelectedTrack(selectedTrackName) {
   const previousTrack = selectedTrack;
   selectedTrack = tracks.find((item) => item.trackName === selectedTrackName);
-  document.getElementById("race-name").innerText = selectedTrack.trackName;
+  const countryImage = document.createElement("img");
+  countryImage.src = `./assets/icons/flags/${countryCode[
+    selectedTrack.brisCode
+  ]?.toLowerCase()}.svg`;
+  countryImage.className = "margin-right-8";
+  document.getElementById("race-name").innerText = "";
+  document
+    .getElementById("race-name")
+    .append(countryImage, selectedTrack.trackName);
 
   document.getElementById("races-table-body").childNodes.forEach((child) => {
     if (
@@ -122,9 +175,13 @@ function setSelectedTrack(selectedTrackName) {
     raceSelect.append(option);
   });
   const mtpBlock = document.getElementById("race-bar-mtp-block");
-  mtpBlock.innerText = selectedTrack.raceTime;
+  mtpBlock.innerText = selectedTrack?.raceTime || 'NA';
   mtpBlock.className = "mtp-block";
-  if (Number(selectedTrack?.raceTime?.replace(" MTP", "")) <= 5) {
+  if(selectedTrack?.raceTime?.toLowerCase() === "off" ||  !selectedTrack?.raceTime){
+    mtpBlock.style.width = "50px"
+    mtpBlock.style.textAlign = "center"
+  }
+  if (Number(selectedTrack?.raceTime?.replace(" MTP", "")) <= 5 || selectedTrack?.raceTime.toLowerCase() === "off") {
     mtpBlock.classList.add("mtp-block-warning");
   }
   fetchRaceDetails(
@@ -268,8 +325,8 @@ function populateResults(results) {
 
     const pgmCircle = document.createElement("div");
     pgmCircle.className = "pgm-circle";
-    pgmCircle.style.width = "6px"
-    pgmCircle.style.height = "6px"
+    pgmCircle.style.width = "6px";
+    pgmCircle.style.height = "6px";
 
     const playerNumber = document.createElement("div");
     playerNumber.className = "player-number";
@@ -418,8 +475,8 @@ function populateSuggestedWagers(selection) {
     const pgmCircle = document.createElement("div");
     pgmCircle.className = "pgm-circle";
     pgmCircle.style.background = bulletColors[item.color[0]];
-    pgmCircle.style.width = "6px"
-    pgmCircle.style.height = "6px"
+    pgmCircle.style.width = "6px";
+    pgmCircle.style.height = "6px";
 
     const playerNumber = document.createElement("div");
     playerNumber.className = "player-number";
@@ -466,13 +523,13 @@ function changeSideBarVisibility(barId) {
   sideBar.classList.contains("visible") ? closeBar() : openBar();
 }
 
-const searchBar = document.getElementById('search-bar')
+const searchBar = document.getElementById("search-bar");
 
-searchBar.addEventListener('input', handleSearch);
+searchBar.addEventListener("input", handleSearch);
 
 function handleSearch(e) {
-  const {value} = e.target;
+  const { value } = e.target;
   searchQuery = value.trim();
-  populateTracksTable(tracks)
-  setSelectedTrack(selectedTrack.trackName)
+  populateTracksTable(tracks);
+  setSelectedTrack(selectedTrack.trackName);
 }
