@@ -387,10 +387,12 @@ function populateResults(results) {
     if (playerInfo?.color?.background === "#ffffff") {
       playerNumber.style.border = "1px solid #636363";
     }
-    if (playerInfo?.color?.font === "white") {
+    if (playerInfo.color.font === "white" || playerInfo.programNumber === "4") {
       playerNumber.classList.add("outline-number");
     }
-    playerNumber.style.color = playerInfo?.color?.font;
+    playerNumber.style.color =
+    playerInfo.programNumber === "4" ? "white" : playerInfo.color.font;
+    playerNumber.innerText = playerInfo.programNumber;
     playerNumber.innerText = playerInfo?.programNumber;
 
     const numberWithCircle = document.createElement("div");
@@ -537,10 +539,11 @@ function populateSuggestedWagers(selection) {
     if (playerInfo.color.background === "#ffffff") {
       playerNumber.style.border = "1px solid #636363";
     }
-    if (playerInfo.color.font === "white") {
+    if (playerInfo.color.font === "white" || playerInfo.programNumber === "4") {
       playerNumber.classList.add("outline-number");
     }
-    playerNumber.style.color = playerInfo.color.font;
+    playerNumber.style.color =
+    playerInfo.programNumber === "4" ? "white" : playerInfo.color.font;
     playerNumber.innerText = playerInfo.programNumber;
 
     const numberWithCircle = document.createElement("div");
