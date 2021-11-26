@@ -95,8 +95,8 @@ function populateTracksTable(tracks) {
       };
 
       const trackCell = document.createElement("td");
-      if(arr.length === index+1){
-        trackCell.style.borderRadius = '0px 0px 0px 4px';
+      if (arr.length === index + 1) {
+        trackCell.style.borderRadius = "0px 0px 0px 4px";
       }
       const trackBlock = document.createElement("div");
       trackBlock.className = "flex-row";
@@ -116,8 +116,8 @@ function populateTracksTable(tracks) {
       if (Number(item?.raceTime?.replace(" MTP", "")) <= 5) {
         mtpCell.classList.add("warning-text-color");
       }
-      if(arr.length === index+1){
-        mtpCell.style.borderRadius = '0px 0px 4px 0px';
+      if (arr.length === index + 1) {
+        mtpCell.style.borderRadius = "0px 0px 4px 0px";
       }
 
       tableRow.append(trackCell, raceCell, mtpCell);
@@ -153,28 +153,33 @@ function setSelectedTrack(selectedTrackName) {
     }
   });
 
-  const raceSelect = document.getElementById("race-select");
-  raceSelect.onchange = (e) => {
-    fetchRaceDetails(e.target.value);
-  };
-  raceSelect.innerHTML = "";
-  selectedTrack.raceDetails.forEach((race) => {
-    const option = document.createElement("option");
-    option.value = race.raceName.replace("Race ", "");
-    option.innerText = race.raceName;
+  if (
+    previousTrack?.trackName !== selectedTrack?.trackName &&
+    selectedRace?.name !== selectedTrack?.trackName
+  ) {
+    const raceSelect = document.getElementById("race-select");
+    raceSelect.onchange = (e) => {
+      fetchRaceDetails(e.target.value);
+    };
+    raceSelect.innerHTML = "";
+    selectedTrack.raceDetails.forEach((race) => {
+      const option = document.createElement("option");
+      option.value = race.raceName.replace("Race ", "");
+      option.innerText = race.raceName;
 
-    if (
-      selectedRace !== null &&
-      previousTrack.trackName === selectedTrackName
-    ) {
-      selectedRace.raceNumber === option.value
-        ? (option.selected = true)
-        : null;
-    } else if (option.value === selectedTrack.currentRace) {
-      option.selected = true;
-    }
-    raceSelect.append(option);
-  });
+      if (
+        selectedRace !== null &&
+        previousTrack.trackName === selectedTrackName
+      ) {
+        selectedRace.raceNumber === option.value
+          ? (option.selected = true)
+          : null;
+      } else if (option.value === selectedTrack.currentRace) {
+        option.selected = true;
+      }
+      raceSelect.append(option);
+    });
+  }
 
   fetchRaceDetails(
     selectedRace === null || previousTrack.trackName !== selectedTrackName
@@ -209,7 +214,8 @@ function setSelectedRace(race) {
     `${
       race.name === selectedTrack.trackName &&
       race.raceNumber === selectedTrack.currentRace &&
-      (selectedTrack.raceTime === "Off" || selectedTrack.raceTime === "Official")
+      (selectedTrack.raceTime === "Off" ||
+        selectedTrack.raceTime === "Official")
         ? selectedTrack.raceTime
         : race?.mtp + " MTP"
     }` || "NA";
@@ -218,7 +224,6 @@ function setSelectedRace(race) {
     selectedTrack?.raceTime?.toLowerCase() === "off" ||
     !selectedTrack?.raceTime
   ) {
-    mtpBlock.style.minWidth = "50px";
     mtpBlock.style.textAlign = "center";
   } else {
     mtpBlock.style.width = "unset";
@@ -253,8 +258,8 @@ function populatePlayersTable(players) {
 
     /** Number cell creation */
     const numberCell = document.createElement("td");
-    if(arr.length === index+1){
-      numberCell.style.borderRadius = '0px 0px 0px 4px';
+    if (arr.length === index + 1) {
+      numberCell.style.borderRadius = "0px 0px 0px 4px";
     }
 
     const cellBlock = document.createElement("div");
@@ -299,6 +304,9 @@ function populatePlayersTable(players) {
     horseCell.innerText = item.name;
     horseCell.className = "horse-table-cell";
 
+    /**Empty cell */
+    const emptyCell = document.createElement("td");
+
     /**Post cell creation */
     const postCell = document.createElement("td");
     postCell.className = "position-cell";
@@ -322,8 +330,8 @@ function populatePlayersTable(players) {
 
     /**Win Odds cell creation */
     const winOddsCell = document.createElement("td");
-    if(arr.length === index+1){
-      winOddsCell.style.borderRadius = '0px 0px 0px 4px';
+    if (arr.length === index + 1) {
+      winOddsCell.style.borderRadius = "0px 0px 0px 4px";
     }
     winOddsCell.className = "win-odds-cell";
     const oddBlock = document.createElement("div");
@@ -334,7 +342,7 @@ function populatePlayersTable(players) {
     oddBlock.innerHTML = item.odds;
     winOddsCell.append(oddBlock);
 
-    tableRow.append(numberCell, horseCell, postCell, winOddsCell);
+    tableRow.append(numberCell, horseCell, emptyCell, postCell, winOddsCell);
     playersTable.append(tableRow);
   });
 }
