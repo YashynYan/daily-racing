@@ -461,11 +461,11 @@ main {
   color: #c9c9c9;
 }
 
-.search-bar::-moz-placeholder {
+.search-bar:-moz-placeholder {
   font-weight: 450;
   color: #c9c9c9;
 }
-.search-bar::-ms-input-placeholder {
+.search-bar:-ms-input-placeholder {
   font-weight: 450;
   color: #c9c9c9;
 }
