@@ -70,7 +70,7 @@ function populateTracksTable(tracks) {
     const mtpCell = document.createElement("td");
     mtpCell.className = "text-align-center";
     mtpCell.innerText = item.raceTime || "NA";
-    if(Number(item.raceTime.replace(" MTP", "")) <=5){
+    if(Number(item?.raceTime?.replace(" MTP", "")) <=5){
       mtpCell.classList.add('warning-text-color')
     }
 
