@@ -98,9 +98,6 @@ function populateTracksTable(tracks) {
       const trackBlock = document.createElement("div");
       trackBlock.className = "flex-row";
       const countryImage = document.createElement("img");
-      countryCode[item.brisCode] === undefined
-        ? console.log(item.brisCode)
-        : null;
       countryImage.src = `./assets/icons/flags/${countryCode[
         item.brisCode
       ]?.toLowerCase()}.svg`;
@@ -221,7 +218,6 @@ function setSelectedRace(race) {
   ) {
     mtpBlock.classList.add("mtp-block-warning");
   } else {
-    console.log("remove");
     mtpBlock.classList.remove("mtp-block-warning");
   }
 
@@ -277,6 +273,7 @@ function populatePlayersTable(players) {
     const position = document.createElement("div");
     position.innerText = item.postPosition;
     position.className = "pgm-position";
+    position.style.paddingRight = '1px' ;
 
     numberBlock.append(numberWithCircle, position);
     cellBlock.append(numberBlock);
