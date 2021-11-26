@@ -21,6 +21,11 @@ thead {
   border-radius: 4px 4px 0px 0px;
 }
 
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
 .thead-with-margin::after {
   content: "@";
   display: block;
@@ -38,9 +43,9 @@ th {
 }
 
 .avatar-block {
-  width: 32px;
-  min-width: 32px;
-  height: 32px;
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
   background: #4d4dff;
   border-radius: 50%;
   margin-right: 4px;
@@ -48,9 +53,9 @@ th {
 }
 
 .avatar {
-  width: 26px !important;
-  min-width: 26px;
-  height: 26px;
+  width: 40px !important;
+  min-width: 40px;
+  height: 40px;
   background: #ffffff;
   border-radius: 50%;
   display: flex;
@@ -271,7 +276,7 @@ main {
   font-weight: 900;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
+  font-size: 21px;
   border-radius: 4px;
   background: red;
 }
@@ -469,8 +474,12 @@ main {
   background-repeat: no-repeat;
   background-position-x: 100%;
   background-position-y: 6px;
-  padding-right: 25px;
+  padding-right: 16px;
   width: 80px;
+}
+
+.race-select:focus{
+  outline: none;
 }
 
 .right-bar {
@@ -521,7 +530,7 @@ main {
 .mtp-block {
   border-radius: 4px;
   padding: 8px 12px;
-  background-color: #4D4DFF;
+  background-color: #4d4dff;
   color: #ffffff;
 }
 
@@ -536,18 +545,28 @@ main {
 }
 
 #race-name {
+  width: 100%;
 }
 
 #current-date-race-bar {
-  justify-self: flex-end;
+  white-space: nowrap;
+  width: fit-content;
+  margin-right: 40px;
 }
 
 #race-select {
-  justify-self: flex-end;
+  white-space: nowrap;
+  width: fit-content;
+  margin-right: 40px;
 }
 
 #race-bar-mtp-block {
-  justify-self: flex-end;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.results{
+  font-weight: 400;
 }
 
 @media screen and (max-width: 900px) {
@@ -643,5 +662,32 @@ main {
 
   .race-image {
     align-self: center;
+  }
+
+  .race-bar {
+    flex-wrap: wrap;
+  }
+
+  #race-name {
+    order: 3;
+    flex-basis: 50%;
+    margin: 0;
+    width: fit-content;
+  }
+
+  #current-date-race-bar {
+    order: 1;
+    flex-basis: 50%;
+    margin: 0;
+  }
+
+  #race-select {
+    order: 2;
+    margin: 0;
+    width: fit-content;
+  }
+
+  #race-bar-mtp-block {
+    order: 4;
   }
 }

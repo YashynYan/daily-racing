@@ -53,7 +53,7 @@ async function getTrackList() {
 function populateTracksTable(tracks) {
   const raceTableBody = document.getElementById("races-table-body");
   raceTableBody.innerHTML = "";
-  tracks.filter(track => track.trackName.includes(searchQuery)).forEach((item) => {
+  tracks.filter(track => track.trackName.toUpperCase().includes(searchQuery.toUpperCase())).forEach((item) => {
     const tableRow = document.createElement("tr");
     tableRow.className = "table-row";
     tableRow.onclick = (e) => {
@@ -124,7 +124,7 @@ function setSelectedTrack(selectedTrackName) {
   const mtpBlock = document.getElementById("race-bar-mtp-block");
   mtpBlock.innerText = selectedTrack.raceTime;
   mtpBlock.className = "mtp-block";
-  if (Number(selectedTrack.raceTime.replace(" MTP", "")) <= 5) {
+  if (Number(selectedTrack?.raceTime?.replace(" MTP", "")) <= 5) {
     mtpBlock.classList.add("mtp-block-warning");
   }
   fetchRaceDetails(
@@ -262,24 +262,26 @@ function populateResults(results) {
     const resultHeader = document.createElement("div");
     resultHeader.className = "rounded-badge flex-row margin-bottom-1";
 
-    /**sasdsad */
+    /**Generating number block */
     const numberBlock = document.createElement("div");
     numberBlock.className = "flex-column flex-jc-center";
 
     const pgmCircle = document.createElement("div");
     pgmCircle.className = "pgm-circle";
+    pgmCircle.style.width = "6px"
+    pgmCircle.style.height = "6px"
 
     const playerNumber = document.createElement("div");
     playerNumber.className = "player-number";
-    playerNumber.style.background = playerInfo.color.background;
-    if (playerInfo.color.background === "#ffffff") {
+    playerNumber.style.background = playerInfo?.color?.background;
+    if (playerInfo?.color?.background === "#ffffff") {
       playerNumber.style.border = "1px solid #636363";
     }
-    if (playerInfo.color.font === "white") {
+    if (playerInfo?.color?.font === "white") {
       playerNumber.classList.add("outline-number");
     }
-    playerNumber.style.color = playerInfo.color.font;
-    playerNumber.innerText = playerInfo.programNumber;
+    playerNumber.style.color = playerInfo?.color?.font;
+    playerNumber.innerText = playerInfo?.programNumber;
 
     const numberWithCircle = document.createElement("div");
     numberWithCircle.className = "flex-row flex-left-center";
@@ -307,7 +309,7 @@ function populateResults(results) {
     infoBlockContainer.className = "info-block-container margin-bottom-4";
 
     const ppInfoRow = document.createElement("div");
-    ppInfoRow.className = "info-block margin-bottom-4";
+    ppInfoRow.className = "info-block results margin-bottom-4";
 
     const ppLabel = document.createElement("div");
     ppLabel.innerText = "PP";
@@ -416,6 +418,8 @@ function populateSuggestedWagers(selection) {
     const pgmCircle = document.createElement("div");
     pgmCircle.className = "pgm-circle";
     pgmCircle.style.background = bulletColors[item.color[0]];
+    pgmCircle.style.width = "6px"
+    pgmCircle.style.height = "6px"
 
     const playerNumber = document.createElement("div");
     playerNumber.className = "player-number";
