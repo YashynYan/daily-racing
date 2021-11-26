@@ -180,6 +180,8 @@ function setSelectedTrack(selectedTrackName) {
   if(selectedTrack?.raceTime?.toLowerCase() === "off" ||  !selectedTrack?.raceTime){
     mtpBlock.style.width = "50px"
     mtpBlock.style.textAlign = "center"
+  } else {
+    mtpBlock.style.width = "unset"
   }
   if (Number(selectedTrack?.raceTime?.replace(" MTP", "")) <= 5 || selectedTrack?.raceTime.toLowerCase() === "off") {
     mtpBlock.classList.add("mtp-block-warning");
