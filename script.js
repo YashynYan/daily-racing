@@ -196,6 +196,12 @@ async function fetchRaceDetails(raceNumber) {
     .then((response) => response.json())
     .then((data) => {
       setSelectedRace(data);
+    }).catch(error => {
+      populateExoticResults([])
+      populatePlayersTable([])
+      populateResults([])
+      populateSuggestedWagers([])
+      setSelectedRace({})
     });
 }
 
@@ -217,7 +223,7 @@ function setSelectedRace(race) {
       (selectedTrack.raceTime === "Off" ||
         selectedTrack.raceTime === "Official")
         ? selectedTrack.raceTime
-        : race?.mtp + " MTP"
+        : race.mtp? race?.mtp + " MTP": 'NA'
     }` || "NA";
   mtpBlock.className = "mtp-block";
   if (
