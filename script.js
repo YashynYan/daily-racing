@@ -87,7 +87,7 @@ function populateTracksTable(tracks) {
     .filter((track) =>
       track.trackName.toUpperCase().includes(searchQuery.toUpperCase())
     )
-    .forEach((item) => {
+    .forEach((item, index, arr) => {
       const tableRow = document.createElement("tr");
       tableRow.className = "table-row";
       tableRow.onclick = (e) => {
@@ -95,6 +95,9 @@ function populateTracksTable(tracks) {
       };
 
       const trackCell = document.createElement("td");
+      if(arr.length === index+1){
+        trackCell.style.borderRadius = '0px 0px 0px 4px';
+      }
       const trackBlock = document.createElement("div");
       trackBlock.className = "flex-row";
       const countryImage = document.createElement("img");
@@ -112,6 +115,9 @@ function populateTracksTable(tracks) {
       mtpCell.innerText = item.raceTime || "NA";
       if (Number(item?.raceTime?.replace(" MTP", "")) <= 5) {
         mtpCell.classList.add("warning-text-color");
+      }
+      if(arr.length === index+1){
+        mtpCell.style.borderRadius = '0px 0px 4px 0px';
       }
 
       tableRow.append(trackCell, raceCell, mtpCell);
@@ -203,8 +209,8 @@ function setSelectedRace(race) {
     `${
       race.name === selectedTrack.trackName &&
       race.raceNumber === selectedTrack.currentRace &&
-      selectedTrack.raceTime === "Off"
-        ? "Off"
+      (selectedTrack.raceTime === "Off" || selectedTrack.raceTime === "Official")
+        ? selectedTrack.raceTime
         : race?.mtp + " MTP"
     }` || "NA";
   mtpBlock.className = "mtp-block";
@@ -212,7 +218,7 @@ function setSelectedRace(race) {
     selectedTrack?.raceTime?.toLowerCase() === "off" ||
     !selectedTrack?.raceTime
   ) {
-    mtpBlock.style.width = "50px";
+    mtpBlock.style.minWidth = "50px";
     mtpBlock.style.textAlign = "center";
   } else {
     mtpBlock.style.width = "unset";
@@ -240,13 +246,16 @@ function populatePlayersTable(players) {
   const playersTable = document.getElementById("table-players-info");
   playersTable.innerHTML = "";
 
-  players?.forEach((item) => {
+  players?.forEach((item, index, arr) => {
     const tableRow = document.createElement("tr");
     tableRow.className = "rounded-badge";
     tableRow.style.paddingLeft = "0";
 
     /** Number cell creation */
     const numberCell = document.createElement("td");
+    if(arr.length === index+1){
+      numberCell.style.borderRadius = '0px 0px 0px 4px';
+    }
 
     const cellBlock = document.createElement("div");
     cellBlock.className = "flex-row flex-center";
@@ -313,6 +322,9 @@ function populatePlayersTable(players) {
 
     /**Win Odds cell creation */
     const winOddsCell = document.createElement("td");
+    if(arr.length === index+1){
+      winOddsCell.style.borderRadius = '0px 0px 0px 4px';
+    }
     winOddsCell.className = "win-odds-cell";
     const oddBlock = document.createElement("div");
     oddBlock.className = "wager";
