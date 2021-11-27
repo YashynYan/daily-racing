@@ -24,11 +24,6 @@ body {
   background: #f9f9f9;
   height: 100%;
 }
-/* 
-header {
-  padding-top: 0;
-  padding-bottom: 0;
-} */
 
 main {
   height: 100%;
@@ -111,6 +106,10 @@ main {
   justify-content: space-evenly;
   padding: 8px;
   gap: 8px;
+}
+
+.logo-img{
+  width: 147px;
 }
 
 .flex-grow-1 {
@@ -639,7 +638,7 @@ main {
 @media screen and (max-width: 900px) {
   header {
     flex-direction: column;
-    padding: 8px 16px;
+    padding: 0px 0px;
   }
 
   header div:last-child {
@@ -765,5 +764,48 @@ main {
 
   .block-header{
     border-radius: 0;
+  }
+
+  .custom-logout-button{
+    padding: 0px 32px;
+    font-size: 11px;
+  }
+
+  .welcome-block{
+    margin-right: 0;
+    font-size: 11px;
+  }
+
+  .avatar-block{
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+  }
+
+  .avatar{
+    width: 26px !important;
+    height: 26px;
+    min-width: 26px;
+  }
+
+  .avatar img{
+    width: 24px;
+    height: 24px;
+  }
+
+  .logo-img{
+    width: 100px;
+    padding: 8px;
+  }
+
+  .logo-block{
+    background: #FAFBFF;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .header-bar{
+    padding: 8px 16px;
   }
 }
