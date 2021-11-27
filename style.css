@@ -502,7 +502,7 @@ main {
 
 .race-select {
   border: 0;
-  font-weight: 500;
+  font-weight: 450;
   font-size: 16px;
   line-height: 24px;
   font-family: Suisse Intl;
@@ -592,12 +592,14 @@ main {
 
 #race-name {
   width: 100%;
+  font-weight: 400;
 }
 
 #current-date-race-bar {
   white-space: nowrap;
   width: fit-content;
   margin-right: 40px;
+  font-weight: 450;
 }
 
 #race-select {
