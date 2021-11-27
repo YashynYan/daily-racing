@@ -1,12 +1,12 @@
 @font-face {
   font-family: Geomanist;
-  src: url('./assets/fonts/Geomanist-Light.ttf');
+  src: url("./assets/fonts/Geomanist-Light.ttf");
   font-weight: 300;
 }
 
 @font-face {
   font-family: Geomanist;
-  src: url('./assets/fonts/Geomanist-Book.ttf');
+  src: url("./assets/fonts/Geomanist-Book.ttf");
   font-weight: 400;
 }
 
@@ -60,8 +60,8 @@ th {
   box-shadow: 0px 2px 4px -1px rgba(82, 91, 255, 0.08);
 }
 
-.pgm-header{
-  border-bottom: 2px solid #4D4DFF;
+.pgm-header {
+  border-bottom: 2px solid #4d4dff;
 }
 
 .avatar-block {
@@ -506,6 +506,8 @@ main {
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
+  font-weight: 450;
+  font-family: "Suisse Intl";
   color: #000639;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -555,7 +557,7 @@ main {
   display: none;
 }
 
-.players-table-header-cell-font{
+.players-table-header-cell-font {
   font-family: Geomanist;
   font-weight: 400;
 }
@@ -597,6 +599,7 @@ main {
   white-space: nowrap;
   width: fit-content;
   margin-right: 40px;
+  font-weight: 450px;
 }
 
 #race-select {
