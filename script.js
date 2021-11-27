@@ -43,6 +43,9 @@ const countryCode = {
 window.onload = () => {
   const currentDateBlock = document.getElementById("current-date");
   const currentDateRaceBar = document.getElementById("current-date-race-bar");
+  const currentDateRaceBarMobile = document.getElementById(
+    "current-date-race-bar-mobile"
+  );
   const date = Date.now();
   const weekdayOption = { weekday: "long" };
   const monthOption = { month: "short" };
@@ -58,6 +61,7 @@ window.onload = () => {
     "en-US",
     monthOption
   ).format(date)} ${new Date(date).getDate()}`;
+  currentDateRaceBarMobile.innerText = currentDateRaceBar.innerText;
   getTrackList();
 };
 
@@ -90,9 +94,9 @@ function populateTracksTable(tracks) {
     .forEach((item, index, arr) => {
       const tableRow = document.createElement("tr");
       tableRow.className = "table-row";
-      tableRow.onclick = (e) => {
+      tableRow.addEventListener("click", (e) => {
         setSelectedTrack(item.trackName);
-      };
+      });
 
       const trackCell = document.createElement("td");
       if (arr.length === index + 1) {
@@ -132,28 +136,32 @@ function setSelectedTrack(selectedTrackName) {
   const countryImage = document.createElement("img");
   countryImage.src = `./assets/icons/flags/${countryCode[
     selectedTrack.brisCode
-  ]?.toLowerCase()}.svg`;
+  ].toLowerCase()}.svg`;
   countryImage.className = "margin-right-8";
   const raceNameBlock = document.getElementById("race-name");
+  const raceNameBlockMobile = document.getElementById("race-name-mobile");
   const wagerResultsTrackInfoBlock = document.getElementById(
     "wager-results-track-name"
   );
-  raceNameBlock.innerText = "";
-  wagerResultsTrackInfoBlock.innerText = "";
-  raceNameBlock.append(countryImage, selectedTrack.trackName);
+  raceNameBlock.innerHTML = "";
+  raceNameBlockMobile.innerHTML = "";
+  wagerResultsTrackInfoBlock.innerHTML = "";
+
   wagerResultsTrackInfoBlock.append(countryImage, selectedTrack.trackName);
+  raceNameBlock.innerHTML = wagerResultsTrackInfoBlock.innerHTML;
+  raceNameBlockMobile.innerHTML = wagerResultsTrackInfoBlock.innerHTML;
 
   document.getElementById("races-table-body").childNodes.forEach((child) => {
     if (
-      child.firstChild?.innerText === selectedTrack.trackName &&
-      !child.classList?.contains("selected-row")
+      child.firstChild.innerText.toString() == selectedTrack.trackName &&
+      !child.classList.contains("selected-row")
     ) {
-      child.classList.add("selected-row");
+      child.classList.toggle("selected-row");
     } else if (
       child.firstChild?.innerText !== selectedTrack.trackName &&
       child.classList?.contains("selected-row")
     ) {
-      child.classList.remove("selected-row");
+      child.classList.toggle("selected-row");
     }
   });
 
@@ -162,10 +170,15 @@ function setSelectedTrack(selectedTrackName) {
     selectedRace?.name !== selectedTrack?.trackName
   ) {
     const raceSelect = document.getElementById("race-select");
+    const raceSelectMobile = document.getElementById("race-select-mobile");
     raceSelect.onchange = (e) => {
       fetchRaceDetails(e.target.value);
     };
+    raceSelectMobile.onchange = (e) => {
+      fetchRaceDetails(e.target.value);
+    };
     raceSelect.innerHTML = "";
+    raceSelectMobile.innerHTML = "";
     selectedTrack.raceDetails.forEach((race) => {
       const option = document.createElement("option");
       option.value = race.raceName.replace("Race ", "");
@@ -182,6 +195,7 @@ function setSelectedTrack(selectedTrackName) {
         option.selected = true;
       }
       raceSelect.append(option);
+      raceSelectMobile.innerHTML = raceSelect.innerHTML;
     });
   }
 
@@ -220,9 +234,13 @@ function setSelectedRace(race) {
   document.getElementById("race-value").innerText = race.purse || "NA";
   document.getElementById("race-class").innerText =
     race.raceDescription || "NA";
-  document.getElementById('wager-results-race-name').innerText = `Race ${race.raceNumber}`
+  document.getElementById(
+    "wager-results-race-name"
+  ).innerText = `Race ${race.raceNumber}`;
   const mtpBlock = document.getElementById("race-bar-mtp-block");
+  const mtpBlockMobile = document.getElementById("race-bar-mtp-block-mobile");
   const wagerMtpBlock = document.getElementById("wager-results-race-mtp");
+
   mtpBlock.innerText =
     `${
       race.name === selectedTrack.trackName &&
@@ -235,16 +253,21 @@ function setSelectedRace(race) {
         : "NA"
     }` || "NA";
   wagerMtpBlock.innerText = mtpBlock.innerText;
+  mtpBlockMobile.innerText = mtpBlock.innerText;
+
   mtpBlock.className = "mtp-block";
+  mtpBlockMobile.className = "mtp-block";
   wagerMtpBlock.className = "mtp-block";
   if (
     selectedTrack?.raceTime?.toLowerCase() === "off" ||
     !selectedTrack?.raceTime
   ) {
     mtpBlock.style.textAlign = "center";
+    mtpBlockMobile.style.textAlign = "center";
     wagerMtpBlock.style.textAlign = "center";
   } else {
     mtpBlock.style.width = "unset";
+    mtpBlockMobile.style.width = "unset";
     wagerMtpBlock.style.width = "unset";
   }
   if (
@@ -252,9 +275,11 @@ function setSelectedRace(race) {
     selectedTrack?.raceTime.toLowerCase() === "off"
   ) {
     mtpBlock.classList.add("mtp-block-warning");
+    mtpBlockMobile.classList.add("mtp-block-warning");
     wagerMtpBlock.classList.add("mtp-block-warning");
   } else {
     mtpBlock.classList.remove("mtp-block-warning");
+    mtpBlockMobile.classList.remove("mtp-block-warning");
     wagerMtpBlock.classList.remove("mtp-block-warning");
   }
 
@@ -595,7 +620,6 @@ function changeSideBarVisibility(barId) {
 }
 
 const searchBar = document.getElementById("search-bar");
-
 searchBar.addEventListener("input", handleSearch);
 
 function handleSearch(e) {

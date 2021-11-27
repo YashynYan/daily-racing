@@ -10,6 +10,12 @@
   font-weight: 400;
 }
 
+@font-face {
+  font-family: Impact;
+  src: url('./assets/fonts/Impact.ttf');
+}
+
+
 html {
   height: fit-content;
 }
@@ -243,6 +249,7 @@ main {
   color: #000639;
   display: flex;
   justify-content: center;
+  min-width: 64px;
 }
 
 .rounded-badge {
@@ -305,7 +312,7 @@ main {
 }
 
 .outline-number {
-  -webkit-text-stroke: 0.5px black;
+  -webkit-text-stroke: 0.2px black;
 }
 
 .horse-number {
@@ -514,8 +521,7 @@ main {
   background-repeat: no-repeat;
   background-position-x: 100%;
   background-position-y: 6px;
-  padding-right: 16px;
-  width: 80px;
+  padding-right: 18px;
 }
 
 .race-select:focus {
@@ -606,7 +612,6 @@ main {
   white-space: nowrap;
   width: fit-content;
   margin-right: 40px;
-  min-width: 80px;
 }
 
 #race-bar-mtp-block {
@@ -627,6 +632,10 @@ main {
   display: none;
 }
 
+.race-bar-mobile{
+  display: none;
+}
+
 @media screen and (max-width: 900px) {
   header {
     flex-direction: column;
@@ -635,6 +644,11 @@ main {
 
   header div:last-child {
     width: 100%;
+  }
+
+  main{
+    padding-right: 0;
+    padding-left: 0;
   }
 
   .desktop-view {
@@ -666,7 +680,7 @@ main {
     width: 100%;
     top: 0;
     right: 0;
-    background: #e5e5e5;
+    background: #F9F9F9;
     height: 100%;
     max-width: 100%;
   }
@@ -720,39 +734,36 @@ main {
 
   .race-image {
     align-self: center;
+    max-width: unset;
   }
 
   .race-bar {
-    flex-wrap: wrap;
+    display: none;
   }
 
-  #race-name {
-    order: 3;
-    flex-basis: 50%;
-    margin: 0;
-    width: fit-content;
+  .race-bar-mobile{
+    display: block;
   }
 
-  #current-date-race-bar {
-    order: 1;
-    flex-basis: 50%;
-    margin: 0;
+  .race-bar-mobile .race-bar-block{
+    background: #ffff;
+    border-radius: 4px;
+    justify-content: space-between;
+    padding: 8px 16px;
   }
 
-  #race-select {
-    order: 2;
-    margin: 0;
-    width: fit-content;
+  .race-bar-mobile .race-bar-:nth-child(1){
+    padding: 4px 16px;
   }
-
-  #race-bar-mtp-block {
-    order: 4;
-  }
-
+  
   .wager-results-race-info{
     padding: 8px 16px;
     background: #FAFBFF;
     display: flex;
     justify-content: space-between;
+  }
+
+  .block-header{
+    border-radius: 0;
   }
 }

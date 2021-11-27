@@ -10,7 +10,7 @@
   </head>
   <body>
     <header>
-      <img width="164"  src="./assets/images/logo.svg" />
+      <img width="164"  src="./assets/images/horse racing logo svg.svg" />
       <!-- <img width="128" height="64" src="./assets/images/logo.png" /> -->
       <div class="flex-row flex-jc-space-between">
         <div class="flex-row  flex-ai-center flex-jc-center" >
@@ -71,16 +71,25 @@
           <div style="cursor: pointer;" onclick="changeSideBarVisibility('right-bar')">Wager/Results</div>
         </div>
         <div class="flex-column">
-        <div class="race-image mobile-view margin-bottom-16">
-          <img src="./assets/images/zzzzevs_3261-min-768x467 1 (1).svg" />
+        <div class="race-image mobile-view margin-bottom-16" style="border-radius: 4px;">
+          <img src="./assets/images/horse-image.png" />
         </div>
         <div class="race-bar flex-ai-center margin-bottom-8">
-          <div class="flex-row" id="race-name"></div>
-          <!-- <div class="race-details flex-row flex-ai-center"> -->
+            <div class="flex-row" id="race-name"></div>
             <div id='current-date-race-bar'></div>
             <select id='race-select' class="race-select"></select>
             <div id="race-bar-mtp-block" ></div>
-          <!-- </div> -->
+        </div>
+
+        <div class="race-bar-mobile margin-bottom-8">
+          <div class="flex-row margin-bottom-1 race-bar-block">
+            <div id='current-date-race-bar-mobile'></div>
+            <select id='race-select-mobile' class="race-select"></select>
+          </div>
+          <div class="flex-row race-bar-block">
+            <div class="flex-row flex-ai-center" id="race-name-mobile"></div>
+            <div id="race-bar-mtp-block-mobile" ></div>
+          </div>
         </div>
         <div class="race-block margin-bottom-8">
           <div class="race-image desktop-view">
@@ -146,7 +155,7 @@
 
         </div>
         <div>
-          <div class="block-header block-header-grey margin-bottom-8">Results</div>
+          <div class="block-header block-header-grey margin-bottom-8 box-shadow">Results</div>
             <div id="results-container">
             </div>
           
