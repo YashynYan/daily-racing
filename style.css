@@ -509,6 +509,7 @@ main {
   color: #000639;
   -webkit-appearance: none;
   -moz-appearance: none;
+  background: transparent;
   background-image: url("./assets/icons/grey-icon.svg");
   background-repeat: no-repeat;
   background-position-x: 100%;
