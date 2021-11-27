@@ -126,9 +126,14 @@
         </table>
       </div>
       <div id="right-bar" class="right-bar flex-grow-1">
-        <div class="right-bar-mobile-header margin-bottom-8">
-          <div>Wager/Results</div>
-          <div style="cursor: pointer;" onclick="changeSideBarVisibility('right-bar')"><img src="./assets/icons/grey-close-icon.svg"></div>
+        <div class="right-bar-mobile-header box-shadow margin-bottom-8">
+            <div>Wager/Results</div>
+            <div style="cursor: pointer;" onclick="changeSideBarVisibility('right-bar')"><img src="./assets/icons/grey-close-icon.svg"></div>
+        </div>
+        <div class="wager-results-race-info margin-bottom-8 box-shadow flex-row flex-ai-center">
+          <div class="flex-row flex-ai-center" id='wager-results-track-name'></div>
+          <div id='wager-results-race-name'></div>
+          <div id='wager-results-race-mtp'></div>
         </div>
         <div class="yield-block margin-bottom-8">
           <div class="block-header">Yields</div>

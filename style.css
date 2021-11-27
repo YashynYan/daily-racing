@@ -426,7 +426,6 @@ main {
 
 .position-cell {
   padding: 10px 0;
-  /* vertical-align: middle; */
 }
 
 .race-details {
@@ -506,6 +505,7 @@ main {
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
+  font-family: Suisse Intl;
   color: #000639;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -615,6 +615,14 @@ main {
 .results {
   font-weight: 300;
   font-size: 14px;
+}
+
+.box-shadow{
+  box-shadow: 0px 2px 4px -1px rgba(82, 91, 255, 0.08);
+}
+
+.wager-results-race-info{
+  display: none;
 }
 
 @media screen and (max-width: 900px) {
@@ -737,5 +745,12 @@ main {
 
   #race-bar-mtp-block {
     order: 4;
+  }
+
+  .wager-results-race-info{
+    padding: 8px 16px;
+    background: #FAFBFF;
+    display: flex;
+    justify-content: space-between;
   }
 }

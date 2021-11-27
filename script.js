@@ -134,10 +134,14 @@ function setSelectedTrack(selectedTrackName) {
     selectedTrack.brisCode
   ]?.toLowerCase()}.svg`;
   countryImage.className = "margin-right-8";
-  document.getElementById("race-name").innerText = "";
-  document
-    .getElementById("race-name")
-    .append(countryImage, selectedTrack.trackName);
+  const raceNameBlock = document.getElementById("race-name");
+  const wagerResultsTrackInfoBlock = document.getElementById(
+    "wager-results-track-name"
+  );
+  raceNameBlock.innerText = "";
+  wagerResultsTrackInfoBlock.innerText = "";
+  raceNameBlock.append(countryImage, selectedTrack.trackName);
+  wagerResultsTrackInfoBlock.append(countryImage, selectedTrack.trackName);
 
   document.getElementById("races-table-body").childNodes.forEach((child) => {
     if (
@@ -196,12 +200,13 @@ async function fetchRaceDetails(raceNumber) {
     .then((response) => response.json())
     .then((data) => {
       setSelectedRace(data);
-    }).catch(error => {
-      populateExoticResults([])
-      populatePlayersTable([])
-      populateResults([])
-      populateSuggestedWagers([])
-      setSelectedRace({})
+    })
+    .catch((error) => {
+      populateExoticResults([]);
+      populatePlayersTable([]);
+      populateResults([]);
+      populateSuggestedWagers([]);
+      setSelectedRace({});
     });
 }
 
@@ -215,7 +220,9 @@ function setSelectedRace(race) {
   document.getElementById("race-value").innerText = race.purse || "NA";
   document.getElementById("race-class").innerText =
     race.raceDescription || "NA";
+  document.getElementById('wager-results-race-name').innerText = `Race ${race.raceNumber}`
   const mtpBlock = document.getElementById("race-bar-mtp-block");
+  const wagerMtpBlock = document.getElementById("wager-results-race-mtp");
   mtpBlock.innerText =
     `${
       race.name === selectedTrack.trackName &&
@@ -223,24 +230,32 @@ function setSelectedRace(race) {
       (selectedTrack.raceTime === "Off" ||
         selectedTrack.raceTime === "Official")
         ? selectedTrack.raceTime
-        : race.mtp? race?.mtp + " MTP": 'NA'
+        : race.mtp
+        ? race?.mtp + " MTP"
+        : "NA"
     }` || "NA";
+  wagerMtpBlock.innerText = mtpBlock.innerText;
   mtpBlock.className = "mtp-block";
+  wagerMtpBlock.className = "mtp-block";
   if (
     selectedTrack?.raceTime?.toLowerCase() === "off" ||
     !selectedTrack?.raceTime
   ) {
     mtpBlock.style.textAlign = "center";
+    wagerMtpBlock.style.textAlign = "center";
   } else {
     mtpBlock.style.width = "unset";
+    wagerMtpBlock.style.width = "unset";
   }
   if (
     Number(selectedRace?.mtp) <= 5 ||
     selectedTrack?.raceTime.toLowerCase() === "off"
   ) {
     mtpBlock.classList.add("mtp-block-warning");
+    wagerMtpBlock.classList.add("mtp-block-warning");
   } else {
     mtpBlock.classList.remove("mtp-block-warning");
+    wagerMtpBlock.classList.remove("mtp-block-warning");
   }
 
   populatePlayersTable(race.playerInfo);
@@ -391,7 +406,7 @@ function populateResults(results) {
       playerNumber.classList.add("outline-number");
     }
     playerNumber.style.color =
-    playerInfo.programNumber === "4" ? "white" : playerInfo.color.font;
+      playerInfo.programNumber === "4" ? "white" : playerInfo.color.font;
     playerNumber.innerText = playerInfo.programNumber;
     playerNumber.innerText = playerInfo?.programNumber;
 
@@ -543,7 +558,7 @@ function populateSuggestedWagers(selection) {
       playerNumber.classList.add("outline-number");
     }
     playerNumber.style.color =
-    playerInfo.programNumber === "4" ? "white" : playerInfo.color.font;
+      playerInfo.programNumber === "4" ? "white" : playerInfo.color.font;
     playerNumber.innerText = playerInfo.programNumber;
 
     const numberWithCircle = document.createElement("div");
