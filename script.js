@@ -136,7 +136,7 @@ function setSelectedTrack(selectedTrackName) {
   const countryImage = document.createElement("img");
   countryImage.src = `./assets/icons/flags/${countryCode[
     selectedTrack.brisCode
-  ].toLowerCase()}.svg`;
+  ]?.toLowerCase()}.svg`;
   countryImage.className = "margin-right-8";
   const raceNameBlock = document.getElementById("race-name");
   const raceNameBlockMobile = document.getElementById("race-name-mobile");
@@ -247,7 +247,6 @@ function setSelectedRace(race) {
 
   mtpBlock.innerText =
     `${
-      race.name === selectedTrack.trackName &&
       race.raceNumber === selectedTrack.currentRace &&
       (selectedTrack.raceTime === "Off" ||
         selectedTrack.raceTime === "Official")
@@ -274,8 +273,9 @@ function setSelectedRace(race) {
     mtpBlockMobile.style.width = "unset";
     wagerMtpBlock.style.width = "unset";
   }
+
   if (
-    Number(selectedRace?.mtp) <= 5 ||
+    (Number(selectedRace?.mtp) <= 5 && mtpBlock.innerText !== "Official") ||
     selectedTrack?.raceTime.toLowerCase() === "off"
   ) {
     mtpBlock.classList.add("mtp-block-warning");
@@ -649,7 +649,7 @@ function styleDropdowns() {
     /*for each element, create a new DIV that will act as the selected item:*/
     a = document.createElement("DIV");
     a.setAttribute("class", "select-selected");
-    a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+    a.innerHTML = selElmnt?.options[selElmnt?.selectedIndex]?.innerHTML;
     x[i].appendChild(a);
     /*for each element, create a new DIV that will contain the option list:*/
     b = document.createElement("DIV");
