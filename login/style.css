@@ -514,8 +514,8 @@ main {
     text-transform: uppercase;
     color: white;
     opacity: 0.4;
-    text-shadow: -1px -1px 0 #E7E7EC, 1px -1px 0 #E7E7EC, -1px 1px 0 #E7E7EC,
-      1px 1px 0 #E7E7EC;
+    text-shadow: -1px -1px 0 #e7e7ec, 1px -1px 0 #e7e7ec, -1px 1px 0 #e7e7ec,
+      1px 1px 0 #e7e7ec;
   }
 
   .side-image .track-the-race-block :nth-child(2) {
@@ -625,6 +625,11 @@ main {
   }
 
   footer .footer-text .info-text {
+    width: fit-content;
+    padding: 0;
+  }
+
+  footer .footer-text .info-text {
     width: 100%;
   }
 
@@ -632,7 +637,7 @@ main {
     top: 60px;
   }
 
-  .side-image .track-the-race-block :nth-child(n){
+  .side-image .track-the-race-block :nth-child(n) {
     font-size: 30px;
   }
 }

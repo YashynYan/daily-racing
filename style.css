@@ -12,9 +12,8 @@
 
 @font-face {
   font-family: Impact;
-  src: url('./assets/fonts/Impact.ttf');
+  src: url("./assets/fonts/Impact.ttf");
 }
-
 
 html {
   height: fit-content;
@@ -108,7 +107,7 @@ main {
   gap: 8px;
 }
 
-.logo-img{
+.logo-img {
   width: 147px;
 }
 
@@ -507,24 +506,7 @@ main {
 }
 
 .race-select {
-  border: 0;
-  font-weight: 450;
-  font-size: 16px;
-  line-height: 24px;
-  font-family: Suisse Intl;
-  color: #000639;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background: transparent;
-  background-image: url("./assets/icons/grey-icon.svg");
-  background-repeat: no-repeat;
-  background-position-x: 100%;
-  background-position-y: 6px;
-  padding-right: 18px;
-}
-
-.race-select:focus {
-  outline: none;
+  margin-right: 20px;
 }
 
 .right-bar {
@@ -623,15 +605,15 @@ main {
   font-size: 14px;
 }
 
-.box-shadow{
+.box-shadow {
   box-shadow: 0px 2px 4px -1px rgba(82, 91, 255, 0.08);
 }
 
-.wager-results-race-info{
+.wager-results-race-info {
   display: none;
 }
 
-.race-bar-mobile{
+.race-bar-mobile {
   display: none;
 }
 
@@ -645,7 +627,7 @@ main {
     width: -webkit-fill-available;
   }
 
-  main{
+  main {
     padding-right: 0;
     padding-left: 0;
   }
@@ -671,6 +653,7 @@ main {
     background: #e5e5e5;
     height: 100%;
     max-width: 100%;
+    z-index: 100;
   }
 
   .right-bar {
@@ -679,26 +662,30 @@ main {
     width: 100%;
     top: 0;
     right: 0;
-    background: #F9F9F9;
+    background: #f9f9f9;
     height: 100%;
     max-width: 100%;
+    z-index: 100;
   }
 
   .right-bar-mobile-header {
     display: flex;
     background: #ffffff;
     justify-content: space-between;
-    padding: 16px 14px;
+    padding: 14px 16px;
+    line-height: 20px;
   }
 
   .left-bar-mobile-header {
     display: flex;
     justify-content: space-between;
+    padding: 14px 16px;
+    line-height: 20px;
   }
 
   .close-left-bar {
     display: block;
-    padding-right: 22px;
+    padding-right: 16px;
     cursor: pointer;
   }
 
@@ -740,72 +727,91 @@ main {
     display: none;
   }
 
-  .race-bar-mobile{
+  .race-bar-mobile {
     display: block;
   }
 
-  .race-bar-mobile .race-bar-block{
+  .race-bar-mobile .race-bar-block {
     background: #ffff;
     border-radius: 4px;
     justify-content: space-between;
     padding: 8px 16px;
   }
 
-  .race-bar-mobile .race-bar-:nth-child(1){
+  .race-bar-mobile .race-bar-:nth-child(1) {
     padding: 4px 16px;
   }
-  
-  .wager-results-race-info{
+
+  .wager-results-race-info {
     padding: 8px 16px;
-    background: #FAFBFF;
+    background: #fafbff;
     display: flex;
     justify-content: space-between;
   }
 
-  .block-header{
+  .block-header {
     border-radius: 0;
   }
 
-  .custom-logout-button{
+  .custom-logout-button {
     padding: 0px 32px;
     font-size: 11px;
   }
 
-  .welcome-block{
+  .welcome-block {
     margin-right: 0;
     font-size: 11px;
   }
 
-  .avatar-block{
+  .avatar-block {
     width: 32px;
     height: 32px;
     min-width: 32px;
   }
 
-  .avatar{
+  .avatar {
     width: 26px !important;
     height: 26px;
     min-width: 26px;
   }
 
-  .avatar img{
+  .avatar img {
     width: 24px;
     height: 24px;
   }
 
-  .logo-img{
+  .logo-img {
     width: 100px;
     padding: 8px;
   }
 
-  .logo-block{
-    background: #FAFBFF;
+  .logo-block {
+    background: #fafbff;
     width: 100%;
     display: flex;
     justify-content: center;
   }
 
-  .header-bar{
+  .header-bar {
     padding: 8px 16px;
+  }
+  .info-block-container {
+    padding: 12px 16px;
+  }
+
+  .suggested-wagers-card {
+    padding: 8px 16px;
+  }
+
+  .yield-card{
+    padding: 8px 0px 8px 16px;
+  }
+
+  .rounded-badge{
+    padding: 4px 0px 4px 16px;
+  }
+
+  .exotic-result-badge{
+    padding: 12px 16px;
   }
 }

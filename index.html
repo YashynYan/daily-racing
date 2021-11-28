@@ -1,95 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link href="./common-styles.css" rel="stylesheet" />
-    <link href="./style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <header>
-      <div class="logo-block">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="./common-styles.css" rel="stylesheet" />
+  <link href="./style.css" rel="stylesheet" />
+  <link href="./dropdown-style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header>
+    <div class="logo-block">
       <img class="logo-img" src="./assets/images/horse racing logo svg.svg" />
     </div>
-      <div class="flex-row flex-jc-space-between header-bar">
-        <div class="flex-row  flex-ai-center flex-jc-center" >
-          <div class="avatar-block flex-ai-center flex-jc-center">
-            <div class="avatar flex-ai-center flex-jc-center"><img width="36" height="36" src='./assets/icons/avatar.svg'></div>
-          </div>
-          <div class="welcome-block">
-              <div class="user-name">
-                Welcome <a href="/admin">Admin</a>
-            </div>
-            <div class="enjoy-text">Enjoy the Races!</div>
+    <div class="flex-row flex-jc-space-between header-bar">
+      <div class="flex-row  flex-ai-center flex-jc-center">
+        <div class="avatar-block flex-ai-center flex-jc-center">
+          <div class="avatar flex-ai-center flex-jc-center"><img width="36" height="36" src='./assets/icons/avatar.svg'>
           </div>
         </div>
-        <a class="align-self-center" href="logout/">
-          <button onclick="handleDialogVisibility()" class="btn outline-danger custom-logout-button">
-            Log Out
-          </button>
-        </a>
+        <div class="welcome-block">
+          <div class="user-name">
+            Welcome <a href="/admin">Admin</a>
+          </div>
+          <div class="enjoy-text">Enjoy the Races!</div>
+        </div>
       </div>
-    </header>
-    <main>
-      <div id="left-bar" class="left-bar flex-grow-1">
-        <div class="margin-bottom-8">
-          <div class="block-header left-bar-mobile-header" >
-            <div id="current-date"></div>
-            <div class="close-left-bar" onclick="changeSideBarVisibility('left-bar')"><img src="./assets/icons/grey-close-icon.svg"></div>
-          </div>
-          <div class="search-block">
-            <input type="text" class="search-bar" id="search-bar" placeholder="Search for tracks" />
-            <div class="search-icon"><img src="./assets/icons/magnifying-glass.svg"></div>
-          </div>
+      <a class="align-self-center" href="logout/">
+        <button onclick="handleDialogVisibility()" class="btn outline-danger custom-logout-button">
+          Log Out
+        </button>
+      </a>
+    </div>
+  </header>
+  <main>
+    <div id="left-bar" class="left-bar flex-grow-1">
+      <div class="margin-bottom-8">
+        <div class="block-header left-bar-mobile-header">
+          <div id="current-date"></div>
+          <div class="close-left-bar" onclick="changeSideBarVisibility('left-bar')"><img
+              src="./assets/icons/grey-close-icon.svg"></div>
         </div>
-        <table cellspacing="0" >
-          <thead>  
-            <tr>
-              <th
-                class="tracks-table-header text-align-left"
-                style="padding-left: 16px;"
-              >
-                Track
-              </th>
-              <th class="tracks-table-header text-align-left" style="width: 60px;">Race</th>
-              <th class="tracks-table-header text-align-left" style="width: 84px;">MTP</th>
-              <tr class="block-header">
-                <th colspan="3" class="open-for-betting">Open For betting</th>
-                <th></th>
-                <th></th>
-              </tr>
-            </tr>
-          </thead>
-          <tbody id="races-table-body" class="tracks-table-body"> 
-          </tbody>
-        </table>
+        <div class="search-block">
+          <input type="text" class="search-bar" id="search-bar" placeholder="Search for tracks" />
+          <div class="search-icon"><img src="./assets/icons/magnifying-glass.svg"></div>
+        </div>
       </div>
-      <div class="central-bar flex-grow-2">
-        <div class="mobile-sidebar-switcher">
-          <div style="cursor: pointer;" onclick="changeSideBarVisibility('left-bar')">Tracks</div>
-          <div style="cursor: pointer;" onclick="changeSideBarVisibility('right-bar')">Wager/Results</div>
-        </div>
-        <div class="flex-column">
+      <table cellspacing="0">
+        <thead>
+          <tr>
+            <th class="tracks-table-header text-align-left" style="padding-left: 16px;">
+              Track
+            </th>
+            <th class="tracks-table-header text-align-left" style="width: 60px;">Race</th>
+            <th class="tracks-table-header text-align-left" style="width: 84px;">MTP</th>
+          <tr class="block-header">
+            <th colspan="3" class="open-for-betting">Open For betting</th>
+            <th></th>
+            <th></th>
+          </tr>
+          </tr>
+        </thead>
+        <tbody id="races-table-body" class="tracks-table-body">
+        </tbody>
+      </table>
+    </div>
+    <div class="central-bar flex-grow-2">
+      <div class="mobile-sidebar-switcher">
+        <div style="cursor: pointer;" onclick="changeSideBarVisibility('left-bar')">Tracks</div>
+        <div style="cursor: pointer;" onclick="changeSideBarVisibility('right-bar')">Wager/Results</div>
+      </div>
+      <div class="flex-column">
         <div class="race-image mobile-view margin-bottom-16" style="border-radius: 4px;">
           <img src="./assets/images/horse-image.png" />
         </div>
         <div class="race-bar flex-ai-center margin-bottom-8">
-            <div class="flex-row" id="race-name"></div>
-            <div id='current-date-race-bar'></div>
-            <select id='race-select' class="race-select"></select>
-            <div id="race-bar-mtp-block" ></div>
+          <div class="flex-row" id="race-name"></div>
+          <div id='current-date-race-bar'></div>
+          <div class="custom-select">
+            <select id='race-select'></select>
+          </div>
+          <div id="race-bar-mtp-block"></div>
         </div>
 
         <div class="race-bar-mobile margin-bottom-8">
           <div class="flex-row margin-bottom-1 race-bar-block">
             <div id='current-date-race-bar-mobile'></div>
-            <select id='race-select-mobile' class="race-select"></select>
+            <div class="custom-select">
+              <select id='race-select-mobile' class="race-select"></select>
+            </div>
           </div>
           <div class="flex-row race-bar-block">
             <div class="flex-row flex-ai-center" id="race-name-mobile"></div>
-            <div id="race-bar-mtp-block-mobile" ></div>
+            <div id="race-bar-mtp-block-mobile"></div>
           </div>
         </div>
         <div class="race-block margin-bottom-8">
@@ -121,68 +127,71 @@
           </div>
         </div>
       </div>
-        <table cellspacing="0" style='border-spacing: 0 1px;'>
-          <thead class="thead-with-margin">
-            <tr>
-              <th class="players-table-header-cell players-table-header-cell-font pgm-header">PGM</th>
-              <th class="players-table-header-cell players-table-header-cell-font">Horse</th>
-              <th></th>
-              <th class="players-table-header-cell players-table-header-cell-font">Post</th>
-              <th class="players-table-header-cell players-table-header-cell-font">Win Odds</th>
-            </tr>
-          </thead>
-          <tbody id="table-players-info">
-          </tbody>
-        </table>
+      <table cellspacing="0" style='border-spacing: 0 1px;'>
+        <thead class="thead-with-margin">
+          <tr>
+            <th class="players-table-header-cell players-table-header-cell-font pgm-header">PGM</th>
+            <th class="players-table-header-cell players-table-header-cell-font">Horse</th>
+            <th></th>
+            <th class="players-table-header-cell players-table-header-cell-font">Post</th>
+            <th class="players-table-header-cell players-table-header-cell-font">Win Odds</th>
+          </tr>
+        </thead>
+        <tbody id="table-players-info">
+        </tbody>
+      </table>
+    </div>
+    <div id="right-bar" class="right-bar flex-grow-1">
+      <div class="right-bar-mobile-header box-shadow margin-bottom-8">
+        <div>Wager/Results</div>
+        <div style="cursor: pointer;" onclick="changeSideBarVisibility('right-bar')"><img
+            src="./assets/icons/grey-close-icon.svg"></div>
       </div>
-      <div id="right-bar" class="right-bar flex-grow-1">
-        <div class="right-bar-mobile-header box-shadow margin-bottom-8">
-            <div>Wager/Results</div>
-            <div style="cursor: pointer;" onclick="changeSideBarVisibility('right-bar')"><img src="./assets/icons/grey-close-icon.svg"></div>
+      <div class="wager-results-race-info margin-bottom-8 box-shadow flex-row flex-ai-center">
+        <div class="flex-row flex-ai-center" id='wager-results-track-name'></div>
+        <div id='wager-results-race-name'></div>
+        <div id='wager-results-race-mtp'></div>
+      </div>
+      <div class="yield-block margin-bottom-8">
+        <div class="block-header">Yields</div>
+        <div class="yield-card" id="win-yields"><img src="./assets/icons/lightning.svg"> Win Yields: </div>
+        <div class="yield-card" id="total-win-yields"><img src="./assets/icons/lightning.svg">Total Win Yield: </div>
+        <div class="yield-card" id="progressive-win-yield"><img src="./assets/icons/lightning.svg">Progressive Win
+          Yield: </div>
+      </div>
+      <div class="block-header block-header-grey">Suggested Wagers</div>
+      <div id="suggested-wagers-container" class="badges-stack margin-bottom-8">
+
+      </div>
+      <div>
+        <div class="block-header block-header-grey margin-bottom-8 box-shadow">Results</div>
+        <div id="results-container">
         </div>
-        <div class="wager-results-race-info margin-bottom-8 box-shadow flex-row flex-ai-center">
-          <div class="flex-row flex-ai-center" id='wager-results-track-name'></div>
-          <div id='wager-results-race-name'></div>
-          <div id='wager-results-race-mtp'></div>
-        </div>
-        <div class="yield-block margin-bottom-8">
-          <div class="block-header">Yields</div>
-          <div class="yield-card" id="win-yields"><img src="./assets/icons/lightning.svg"> Win Yields: </div>
-          <div class="yield-card" id="total-win-yields"><img src="./assets/icons/lightning.svg">Total Win Yield: </div>
-          <div class="yield-card" id="progressive-win-yield"><img src="./assets/icons/lightning.svg">Progressive Win Yield: </div>
-        </div>
-        <div class="block-header block-header-grey">Suggested Wagers</div>
-        <div id="suggested-wagers-container" class="badges-stack margin-bottom-8">
+
+        <div class="block-header block-header-grey margin-bottom-1">Exotic Results</div>
+        <div id="exotics-container" class="badges-stack">
 
         </div>
-        <div>
-          <div class="block-header block-header-grey margin-bottom-8 box-shadow">Results</div>
-            <div id="results-container">
-            </div>
-          
-          <div class="block-header block-header-grey margin-bottom-1">Exotic Results</div>
-          <div id="exotics-container" class="badges-stack">
-            
-          </div>
-        </div>
       </div>
-    </main>
-    <footer>
-      <div class="horse-racing-text">
-        <div>HORSE RACING</div>
-        <div>HORSE RACING</div>
-      </div>
-      <div class="footer-text">
-        <img src="./assets/images/logo.svg" width="180" height="57" />
-        <p class="info-text">
-          Horse racing is one of the most popular betting products on a
-          sportsbook and in shop, with billions bet on it each year.
-        </p>
-        <p class="copyright">
-          © 2021 dailyracingbets.com. All rights reserved.
-        </p>
-      </div>
-    </footer>
-    <script src="./script.js"></script>
-  </body>
+    </div>
+  </main>
+  <footer>
+    <div class="horse-racing-text">
+      <div>HORSE RACING</div>
+      <div>HORSE RACING</div>
+    </div>
+    <div class="footer-text">
+      <img src="./assets/images/logo.svg" width="180" height="57" />
+      <p class="info-text">
+        Horse racing is one of the most popular betting products on a
+        sportsbook and in shop, with billions bet on it each year.
+      </p>
+      <p class="copyright">
+        © 2021 dailyracingbets.com. All rights reserved.
+      </p>
+    </div>
+  </footer>
+  <script src="./script.js"></script>
+</body>
+
 </html>

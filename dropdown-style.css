@@ -1,0 +1,78 @@
+.custom-select {
+  position: relative;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: transparent;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: url("./assets/icons/grey-icon.svg");
+  width: 0;
+  height: 0;
+  margin-left: 7px;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,
+.select-selected {
+  color: #000639;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 41px;
+  padding-left: 12px;
+  cursor: pointer;
+  user-select: none;
+  width: 60px;
+}
+
+.select-items div{
+  width: -webkit-fill-available;
+}
+
+.select-items div :hover{
+  background: #F5F5F5;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: white;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  box-shadow: 0px 3px 6px -4px rgba(0, 0, 0, 0.12),
+    0px 6px 16px rgba(0, 0, 0, 0.08), 0px 9px 28px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 2px;
+  padding: 4px 0;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+@media screen and (max-width: 900px) {
+  .select-selected {
+    padding-right: 21px;
+  }
+}
