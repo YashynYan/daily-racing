@@ -244,17 +244,14 @@ function setSelectedRace(race) {
   const mtpBlock = document.getElementById("race-bar-mtp-block");
   const mtpBlockMobile = document.getElementById("race-bar-mtp-block-mobile");
   const wagerMtpBlock = document.getElementById("wager-results-race-mtp");
-
-  mtpBlock.innerText =
-    `${
-      race.raceNumber === selectedTrack.currentRace &&
-      (selectedTrack.raceTime === "Off" ||
-        selectedTrack.raceTime === "Official")
-        ? selectedTrack.raceTime
-        : race.mtp
-        ? race?.mtp + " MTP"
-        : "NA"
-    }` || "NA";
+  console.log(race);
+  mtpBlock.innerText = `${
+    race.status === "Open"
+      ? race.mtp + " MTP"
+      : race.status === "Closed"
+      ? "Official"
+      : race?.status || "NA"
+  }`;
   wagerMtpBlock.innerText = mtpBlock.innerText;
   mtpBlockMobile.innerText = mtpBlock.innerText;
 
@@ -275,8 +272,9 @@ function setSelectedRace(race) {
   }
 
   if (
-    (Number(selectedRace?.mtp) <= 5 && mtpBlock.innerText !== "Official") ||
-    selectedTrack?.raceTime.toLowerCase() === "off"
+    Number(selectedRace?.mtp) <= 5 ||
+    race.status === "Off" ||
+    race.status === "Canceled"
   ) {
     mtpBlock.classList.add("mtp-block-warning");
     mtpBlockMobile.classList.add("mtp-block-warning");
