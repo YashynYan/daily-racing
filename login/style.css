@@ -453,13 +453,6 @@ main {
 }
 
 @media screen and (max-width: 768px) {
-  .info-block {
-    margin-top: 16px;
-    margin-bottom: 8px;
-    margin-left: 0;
-    width: 100%;
-  }
-
   h1, h2{
     margin: 0 0 24px 0;
   }
@@ -476,6 +469,10 @@ main {
     flex-direction: column;
     align-items: center;
     padding: 0 3px;
+    margin-top: 36px;
+    margin-bottom: 33px;
+    margin-left: 0;
+    width: 100%;
   }
 
   h1 {
