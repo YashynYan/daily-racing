@@ -48,7 +48,11 @@
         <div>HORSE RACING</div>
       </div>
       <div class="footer-text">
-        <img src="../assets/images/horse racing logo svg.svg" width="180" height="57" />
+        <img
+          src="../assets/images/horse racing logo svg.svg"
+          width="180"
+          height="57"
+        />
         <p class="info-text">
           Horse racing is one of the most popular betting products on a
           sportsbook and in shop, with billions bet on it each year.
@@ -78,7 +82,12 @@
             class="close-icon"
             src="../assets/icons/grey-close-icon.svg"
           />
-          <form action="/login/" method="POST" class="signin-form">
+          <form
+            action="/login/"
+            method="POST"
+            class="signin-form"
+            id="signin-form"
+          >
             <div class="dialog-form">
               <img
                 class="logo-img"
@@ -87,47 +96,98 @@
                 width="202"
                 height="64"
               />
-              <label for="username-field">Username</label>
-              <input
-                type="text"
-                id="username-field"
-                placeholder="Enter your login"
-                required
-                name="username"
-              />
-              <label for="password-field">Password</label>
-              <div class="password-block">
+
+              <!-- {% if form.errors %} -->
+                <!-- <label for="username-field">Username</label>
                 <input
-                  id="password-field"
-                  type="password"
-                  name="password"
-                  placeholder="Enter your password"
+                  type="text"
+                  id="username-field"
+                  placeholder="Enter your login"
+                  class="invalid-field"
                   required
+                  name="username"
+                  onchange="hideError()"
                 />
-                <img
-                  class="eye-icon"
-                  id="eye-icon"
-                  onClick="showPassword()"
-                  src="../assets/icons/eye-icon.svg"
+                <label for="password-field">Password</label>
+                <div class="password-block">
+                  <input
+                    id="password-field"
+                    type="password"
+                    name="password"
+                    class="invalid-field"
+                    placeholder="Enter your password"
+                    required
+                    onchange="hideError()"
+                  />
+                  <img
+                    class="eye-icon"
+                    id="eye-icon"
+                    onClick="showPassword()"
+                    src="../assets/icons/eye-icon.svg"
+                  />
+                </div>
+                <div class="remember-me">
+                  <label class="remember-me-label" for="remember-me">
+                    <input type="checkbox" id="remember-me" />
+                    <span class="checkbox"></span>
+                    Remember me
+                  </label>
+                </div>
+                <div id="error-field" class="error-field">
+                  <img src="../assets/icons/clarity_error.svg" />
+                  Invalid username and/or password
+                </div>
+                <button
+                  type="submit"
+                  class="btn primary custom-main-button submit-button"
+                >
+                  Sign In
+                </button> -->
+              <!-- {% else %} -->
+                <label for="username-field">Username</label>
+                <input
+                  type="text"
+                  id="username-field"
+                  placeholder="Enter your login"
+                  required
+                  name="username"
+                  onchange="hideError()"
                 />
-              </div>
-              <div class="remember-me">
-                <label class="remember-me-label" for="remember-me">
-                  <input type="checkbox" id="remember-me" />
-                  <span class="checkbox"></span>
-                  Remember me
-                </label>
-              </div>
-              <div id="error-field" class="error-field hidden">
-                <img src="../assets/icons/clarity_error.svg" />
-                Invalid username and/or password
-              </div>
-              <button
-                type="submit"
-                class="btn primary custom-main-button submit-button"
-              >
-                Sign In
-              </button>
+                <label for="password-field">Password</label>
+                <div class="password-block">
+                  <input
+                    id="password-field"
+                    type="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                    onchange="hideError()"
+                  />
+                  <img
+                    class="eye-icon"
+                    id="eye-icon"
+                    onClick="showPassword()"
+                    src="../assets/icons/eye-icon.svg"
+                  />
+                </div>
+                <div class="remember-me">
+                  <label class="remember-me-label" for="remember-me">
+                    <input type="checkbox" id="remember-me" />
+                    <span class="checkbox"></span>
+                    Remember me
+                  </label>
+                </div>
+                <div id="error-field" class="error-field hidden">
+                  <img src="../assets/icons/clarity_error.svg" />
+                  Invalid username and/or password
+                </div>
+                <button
+                  type="submit"
+                  class="btn primary custom-main-button submit-button"
+                >
+                  Sign In
+                </button>
+              <!-- {% endif %} -->
             </div>
           </form>
         </div>
