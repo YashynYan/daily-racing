@@ -395,22 +395,22 @@ main {
   }
 
   h1{
-    font-size: 45px;
+    font-size: 40px;
   }
 }
 
 @media screen and (max-width: 1000px) {
   .dialog .dialog-window .dialog-form-block .dialog-form {
-    margin: 70px 26px 80px;
-    width: 300px;
+    margin: 70px 32px 80px;
+    width: 344px;
   }
 
   .dialog .dialog-window .dialog-image {
-    width: 384px;
+    width: 440px;
   }
 
   .dialog .dialog-window {
-    left: calc(50% - 384px);
+    left: calc(50% - 440px);
   }
   .dialog .dialog-window .dialog-image .ellipse-image {
     position: absolute;
@@ -420,12 +420,14 @@ main {
   }
 
   .dialog .dialog-window .dialog-image .horse-racing {
-    font-size: 60px;
-    line-height: 60px;
+    font-size: 80px;
+    margin-top: 110px;
   }
   .dialog .dialog-window .dialog-image .horse-image {
-    width: 408px;
+    width: 473px;
     height: 429px;
+    top: 145px;
+    margin-left: 0px;
   }
 }
 
@@ -444,7 +446,7 @@ main {
   }
 
   h1{
-    font-size: 36px;
+    font-size: 34px;
   }
 
   main {
@@ -452,7 +454,7 @@ main {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 785px) {
   h1, h2{
     margin: 0 0 24px 0;
   }
@@ -468,10 +470,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 3px;
-    margin-top: 36px;
-    margin-bottom: 33px;
-    margin-left: 0;
+    margin: 36px 3px 33px;
     width: 100%;
   }
 

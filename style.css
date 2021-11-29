@@ -650,7 +650,7 @@ main {
     width: 100%;
     top: 0;
     left: 0;
-    background: #e5e5e5;
+    background: #F9F9F9;
     height: 100%;
     max-width: 100%;
     z-index: 100;
@@ -685,7 +685,6 @@ main {
 
   .close-left-bar {
     display: block;
-    padding-right: 16px;
     cursor: pointer;
   }
 
@@ -814,4 +813,12 @@ main {
   .exotic-result-badge{
     padding: 12px 16px;
   }
+
+  .select-items div {
+    padding-right: 0;
+}
+
+.select-selected {
+  margin-right: 0;
+}
 }

@@ -271,10 +271,11 @@ function setSelectedRace(race) {
     wagerMtpBlock.style.width = "unset";
   }
 
+  console.log(selectedRace, race)
+
   if (
-    Number(selectedRace?.mtp) <= 5 ||
-    race.status === "Off" ||
-    race.status === "Canceled"
+    (Number(selectedRace?.mtp) <= 5 ||
+    race.status === "Off") && race.status !== 'Closed'
   ) {
     mtpBlock.classList.add("mtp-block-warning");
     mtpBlockMobile.classList.add("mtp-block-warning");
@@ -647,7 +648,12 @@ function styleDropdowns() {
     /*for each element, create a new DIV that will act as the selected item:*/
     a = document.createElement("DIV");
     a.setAttribute("class", "select-selected");
-    a.innerHTML = selElmnt?.options[selElmnt?.selectedIndex]?.innerHTML;
+    a.innerHTML = selElmnt?.options[selElmnt?.selectedIndex]?.innerHTML || 'NA';
+    if (a.innerHTML === 'NA'){
+      a.style.width = 'unset'
+    } else {
+      a.removeAttribute('style')
+    }
     x[i].appendChild(a);
     /*for each element, create a new DIV that will contain the option list:*/
     b = document.createElement("DIV");
@@ -655,7 +661,6 @@ function styleDropdowns() {
     for (j = 0; j < ll; j++) {
       /*for each option in the original select element,
     create a new DIV that will act as an option item:*/
-      console.log(selElmnt.options[j].value);
       c = document.createElement("DIV");
       let option = selElmnt.options[j];
       c.innerHTML = option.innerHTML;
