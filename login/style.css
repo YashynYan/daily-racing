@@ -25,15 +25,15 @@ h2 {
 
 main {
   position: relative;
-  height: 720px;
+  height: 500px;
 }
 
 .side-image {
   position: absolute;
   right: 0;
   top: -280px;
-  width: 950px;
-  height: 1000px;
+  width: 826px;
+  height: 780px;
 }
 
 .side-image .track-the-race-block {
@@ -45,6 +45,7 @@ main {
   top: 150px;
   right: 0;
   z-index: 3;
+  height: 724px;
 }
 
 .background {
@@ -137,7 +138,7 @@ main {
 .dialog .dialog-window {
   position: absolute;
   top: 60px;
-  left: calc(50% - 502px);
+  left: calc(50% - 488px);
   display: flex;
 }
 
@@ -153,7 +154,7 @@ main {
   align-items: center;
   justify-content: center;
   text-align: center;
-  width: 480px;
+  width: 488px;
 }
 
 .dialog .dialog-window .dialog-image .ellipse-image {
@@ -181,7 +182,7 @@ main {
   position: absolute;
   top: 102px;
   margin-left: -72px;
-  margin-right: -80px;
+  margin-right: -72px;
   margin-bottom: -100px;
 }
 
@@ -196,7 +197,7 @@ main {
 .dialog .dialog-window .dialog-form-block .dialog-form {
   display: flex;
   flex-direction: column;
-  margin: 113px 72px 131px;
+  margin: 113px 56px 131px;
   width: 344px;
 }
 
@@ -382,31 +383,34 @@ main {
     right: 0;
     top: -200px;
     width: 600px;
-    height: 800px;
+    height: 695px;
   }
 
   .horse-img {
-    width: 519px;
-    height: 756px;
+    height: 700px;
   }
 
   main {
-    height: 600px;
+    height: 495px;
+  }
+
+  h1{
+    font-size: 45px;
   }
 }
 
 @media screen and (max-width: 1000px) {
   .dialog .dialog-window .dialog-form-block .dialog-form {
-    margin: 70px 30px 80px;
+    margin: 70px 26px 80px;
     width: 300px;
   }
 
   .dialog .dialog-window .dialog-image {
-    width: 300px;
+    width: 384px;
   }
 
   .dialog .dialog-window {
-    left: calc(50% - 350px);
+    left: calc(50% - 384px);
   }
   .dialog .dialog-window .dialog-image .ellipse-image {
     position: absolute;
@@ -436,11 +440,15 @@ main {
     right: 0;
     top: -200px;
     width: 400px;
-    height: 750px;
+    height: 700px;
+  }
+
+  h1{
+    font-size: 36px;
   }
 
   main {
-    height: 550px;
+    height: 500px;
   }
 }
 
@@ -450,6 +458,10 @@ main {
     margin-bottom: 8px;
     margin-left: 0;
     width: 100%;
+  }
+
+  h1, h2{
+    margin: 0 0 24px 0;
   }
 
   .horse-img {
@@ -463,6 +475,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 3px;
   }
 
   h1 {
@@ -556,7 +569,7 @@ main {
     background: #fafaff;
     display: flex;
     justify-content: flex-end;
-    padding: 22px;
+    padding: 21px;
   }
 
   .dialog .dialog-window .dialog-image {

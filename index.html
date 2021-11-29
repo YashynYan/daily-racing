@@ -24,7 +24,14 @@
         </div>
         <div class="welcome-block">
           <div class="user-name">
-            Welcome <a href="/admin">Admin</a>
+            
+            Welcome 
+            <!-- {% if request.user.is_superuser %} -->
+              <a href="/admin">Admin</a> <!-- Comment this line -->
+              <!-- <a href="/admin">{{request.user.username}}</a> -->
+            <!-- {% else %}
+              {{request.user.username}}
+            {% endif %} -->
           </div>
           <div class="enjoy-text">Enjoy the Races!</div>
         </div>
