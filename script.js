@@ -171,12 +171,6 @@ function setSelectedTrack(selectedTrackName) {
   ) {
     const raceSelect = document.getElementById("race-select");
     const raceSelectMobile = document.getElementById("race-select-mobile");
-    // raceSelect.onchange = (e) => {
-    //   fetchRaceDetails(e.target.value);
-    // };
-    // raceSelectMobile.onchange = (e) => {
-    //   fetchRaceDetails(e.target.value);
-    // };
     raceSelect.innerHTML = "";
     raceSelectMobile.innerHTML = "";
     selectedTrack.raceDetails.forEach((race) => {
@@ -730,11 +724,7 @@ then close all select boxes:*/
 function checkWinOdd(odd) {
   if (isNaN(odd)) {
     return odd;
-  } else if (odd % 1 === 0){
-    return odd;
-  } else if ( odd % 1 == (odd%1).toFixed(2)){
-    return odd;
   } else {
-    return odd.toFixed(2)
+    return Number(Number(odd).toFixed(2))
   }
 }
