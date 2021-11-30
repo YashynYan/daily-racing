@@ -230,7 +230,6 @@ async function fetchRaceDetails(raceNumber) {
 
 function setSelectedRace(race) {
   selectedRace = race;
-  console.log(race, selectedTrack);
   document.getElementById("race-distance").innerText = race.distance || "NA";
   document.getElementById("race-surface").innerText =
     race.surfaceConditions || "NA";
@@ -244,7 +243,6 @@ function setSelectedRace(race) {
   const mtpBlock = document.getElementById("race-bar-mtp-block");
   const mtpBlockMobile = document.getElementById("race-bar-mtp-block-mobile");
   const wagerMtpBlock = document.getElementById("wager-results-race-mtp");
-  console.log(race);
   mtpBlock.innerText = `${
     race.status === "Open"
       ? race.mtp + " MTP"
@@ -271,11 +269,9 @@ function setSelectedRace(race) {
     wagerMtpBlock.style.width = "unset";
   }
 
-  console.log(selectedRace, race)
-
   if (
-    (Number(selectedRace?.mtp) <= 5 ||
-    race.status === "Off") && race.status !== 'Closed'
+    (Number(selectedRace?.mtp) <= 5 || race.status === "Off") &&
+    race.status !== "Closed"
   ) {
     mtpBlock.classList.add("mtp-block-warning");
     mtpBlockMobile.classList.add("mtp-block-warning");
@@ -388,7 +384,7 @@ function populatePlayersTable(players) {
     if (Number(item.odds) < 1) {
       oddBlock.classList.add("mtp-block-warning");
     }
-    oddBlock.innerHTML = item.odds;
+    oddBlock.innerHTML = checkWinOdd(item.odds);
     winOddsCell.append(oddBlock);
 
     tableRow.append(numberCell, horseCell, emptyCell, postCell, winOddsCell);
@@ -597,7 +593,7 @@ function populateSuggestedWagers(selection) {
     /**Generate wager block */
     const wagerBlock = document.createElement("div");
     wagerBlock.className = "wager";
-    wagerBlock.innerText = playerInfo.odds;
+    wagerBlock.innerText = checkWinOdd(playerInfo.odds);
 
     wagerCard.append(numberBlock, wagerBlock);
     wageContainer.append(wagerCard);
@@ -648,11 +644,11 @@ function styleDropdowns() {
     /*for each element, create a new DIV that will act as the selected item:*/
     a = document.createElement("DIV");
     a.setAttribute("class", "select-selected");
-    a.innerHTML = selElmnt?.options[selElmnt?.selectedIndex]?.innerHTML || 'NA';
-    if (a.innerHTML === 'NA'){
-      a.style.width = 'unset'
+    a.innerHTML = selElmnt?.options[selElmnt?.selectedIndex]?.innerHTML || "NA";
+    if (a.innerHTML === "NA") {
+      a.style.width = "unset";
     } else {
-      a.removeAttribute('style')
+      a.removeAttribute("style");
     }
     x[i].appendChild(a);
     /*for each element, create a new DIV that will contain the option list:*/
@@ -729,4 +725,16 @@ function styleDropdowns() {
   /*if the user clicks anywhere outside the select box,
 then close all select boxes:*/
   document.addEventListener("click", closeAllSelect);
+}
+
+function checkWinOdd(odd) {
+  if (isNaN(odd)) {
+    return odd;
+  } else if (odd % 1 === 0){
+    return odd;
+  } else if ( odd % 1 == (odd%1).toFixed(2)){
+    return odd;
+  } else {
+    return odd.toFixed(2)
+  }
 }
