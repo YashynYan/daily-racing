@@ -646,17 +646,17 @@ async function calculateYields() {
       });
       if (redYield !== -2) {
         progressiveTotalYield = Number(
-          Number(progressiveTotalYield + redYield).toFixed(1)
+          Number(progressiveTotalYield + redYield + 2).toFixed(1)
         );
       }
       if (yellowYield !== -2) {
         progressiveTotalYield = Number(
-          Number(progressiveTotalYield + yellowYield).toFixed(1)
+          Number(progressiveTotalYield + yellowYield + 2).toFixed(1)
         );
       }
       if (greenYield !== -2) {
         progressiveTotalYield = Number(
-          Number(progressiveTotalYield + greenYield).toFixed(1)
+          Number(progressiveTotalYield + greenYield + 2).toFixed(1)
         );
       }
     });
@@ -707,17 +707,17 @@ async function calculateYields() {
             });
             if (previousRedYield !== -2) {
               previousTotalYield = Number(
-                Number(previousTotalYield + previousRedYield).toFixed(1)
+                Number(previousTotalYield + previousRedYield + 2).toFixed(1)
               );
             }
             if (previousYellowYield !== -2) {
               previousTotalYield = Number(
-                Number(previousTotalYield + previousYellowYield).toFixed(1)
+                Number(previousTotalYield + previousYellowYield + 2).toFixed(1)
               );
             }
             if (previousGreenYield !== -2) {
               previousTotalYield = Number(
-                Number(previousTotalYield + previousGreenYield).toFixed(1)
+                Number(previousTotalYield + previousGreenYield + 2).toFixed(1)
               );
             }
           });
