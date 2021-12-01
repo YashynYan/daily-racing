@@ -208,6 +208,10 @@ main {
   display: flex;
   font-weight: 450;
 }
+.yield-value{
+  margin-left: 3px;
+  margin-bottom: 0;
+}
 
 .yield-card img {
   margin-right: 8px;

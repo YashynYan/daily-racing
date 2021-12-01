@@ -210,8 +210,9 @@ async function fetchRaceDetails(raceNumber) {
     { keepalive: true, headers: { "Content-Type": "application/json" } }
   )
     .then((response) => response.json())
-    .then((data) => {
-      setSelectedRace(data);
+    .then(async (data) => {
+      console.log(data);
+      await setSelectedRace(data);
     })
     .catch((error) => {
       populateExoticResults([]);
@@ -222,7 +223,7 @@ async function fetchRaceDetails(raceNumber) {
     });
 }
 
-function setSelectedRace(race) {
+async function setSelectedRace(race) {
   selectedRace = race;
   document.getElementById("race-distance").innerText = race.distance || "NA";
   document.getElementById("race-surface").innerText =
@@ -284,6 +285,7 @@ function setSelectedRace(race) {
     race?.result?.filter((item) => item[0].includes("$") && item[0] !== " ")
   );
   populateSuggestedWagers(race.selection);
+  await calculateYields();
 }
 
 function populatePlayersTable(players) {
@@ -597,6 +599,131 @@ function populateSuggestedWagers(selection) {
   sugestedWagerCard.className = "suggested-wagers-card";
 }
 
+async function calculateYields() {
+  let redYield = -2;
+  let yellowYield = -2;
+  let greenYield = -2;
+  let progressiveRedYield = 0;
+  let progressiveTotalYield = -2 * selectedRace.selection.length;
+  const redYieldContainer = document.getElementById("red-yield-value");
+  const yellowYieldContainer = document.getElementById("yellow-yield-value");
+  const greenYieldContainer = document.getElementById("green-yield-value");
+  const progressiveRedYieldContainer = document.getElementById(
+    "progressive-red-yield-value"
+  );
+  const progressiveTotalYieldContainer = document.getElementById(
+    "progressive-total-yield-value"
+  );
+
+  if (selectedRace.status === "Official") {
+    const resultWithWinValue = selectedRace?.result?.filter(
+      (item) => !item[0].includes("$") && item[0] !== " " && item[3] !== " "
+    );
+
+    resultWithWinValue.forEach((item) => {
+      const horseName = item[2];
+
+      const horseNumber = selectedRace.find(
+        (race) => race.name === horseName
+      ).programNumber;
+
+      selectedRace.selection.forEach((selection) => {
+        if (selection.programNumber === horseNumber) {
+          switch (selection.color[0]) {
+            case "red":
+              redYield = redYield + item[3];
+              break;
+            case "yellow":
+              yellowYield = redYield + item[3];
+              break;
+            case "green":
+              greenYield = redYield + item[3];
+              break;
+          }
+        }
+      });
+
+      if (redYield !== -2) {
+        progressiveTotalYield = progressiveTotalYield + redYield;
+      }
+      if (yellowYield !== -2) {
+        progressiveTotalYield = progressiveTotalYield + yellowYield;
+      }
+      if (greenYield !== -2) {
+        progressiveTotalYield = progressiveTotalYield + greenYield;
+      }
+    });
+
+    for (i = 1; i < Number(selectedRace.raceNumber); i++) {
+      await fetch(
+        `${API_ADDRESS}race-detail/?bris_code=${selectedTrack.brisCode}&race_number=${i}`,
+        { keepalive: true, headers: { "Content-Type": "application/json" } }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          let previousRedYield = -2;
+          let previousYellowYield = -2;
+          let previousGreenYield = -2;
+          let previousTotalYield = -2 * data.selection.length;
+
+          const previousResultWithWinValue = data?.result?.filter(
+            (item) =>
+              !item[0].includes("$") && item[0] !== " " && item[3] !== " "
+          );
+
+          previousResultWithWinValue.forEach((item) => {
+            const horseName = item[2];
+
+            const previousHorseNumber = data.find(
+              (race) => race.name === horseName
+            ).programNumber;
+
+            data.selection.forEach((selection) => {
+              if (selection.programNumber === previousHorseNumber) {
+                switch (selection.color[0]) {
+                  case "red":
+                    previousRedYield = previousRedYield + item[3];
+                    break;
+                  case "yellow":
+                    previousYellowYield = redYield + item[3];
+                    break;
+                  case "green":
+                    previousGreenYield = redYield + item[3];
+                    break;
+                }
+              }
+            });
+
+            if (previousRedYield !== -2) {
+              previousTotalYield = previousTotalYield + previousRedYield;
+            }
+            if (previousYellowYield !== -2) {
+              previousTotalYield = previousTotalYield + previousYellowYield;
+            }
+            if (previousGreenYield !== -2) {
+              previousTotalYield = previousTotalYield + previousGreenYield;
+            }
+          });
+
+          progressiveRedYield = progressiveRedYield + previousRedYield;
+          progressiveTotalYield = progressiveTotalYield + previousTotalYield;
+        });
+    }
+  }
+
+  redYieldContainer.innerText = redYield > 0 ? `+${redYield}` : redYield;
+  yellowYieldContainer.innerText =
+    yellowYield > 0 ? `+${yellowYield}` : yellowYield;
+  greenYieldContainer.innerText =
+    greenYield > 0 ? `+${greenYield}` : greenYield;
+  progressiveRedYieldContainer.innerText =
+    progressiveRedYield > 0 ? `+${progressiveRedYield}` : progressiveRedYield;
+  progressiveTotalYieldContainer.innerText =
+    progressiveTotalYield > 0
+      ? `+${progressiveTotalYield}`
+      : progressiveTotalYield;
+}
+
 function changeSideBarVisibility(barId) {
   const sideBar = document.getElementById(barId);
   const footer = document.getElementsByTagName("footer")[0];
@@ -725,6 +852,6 @@ function checkWinOdd(odd) {
   if (isNaN(odd)) {
     return odd;
   } else {
-    return Number(Number(odd).toFixed(2))
+    return Number(Number(odd).toFixed(2));
   }
 }
