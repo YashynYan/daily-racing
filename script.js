@@ -604,7 +604,7 @@ async function calculateYields() {
   let redYield = -2;
   let yellowYield = -2;
   let greenYield = -2;
-  let progressiveRedYield = 0;
+  let progressiveRedYield = -2;
   let progressiveTotalYield = -2 * selectedRace?.selection?.length;
   const redYieldContainer = document.getElementById("red-yield-value");
   const yellowYieldContainer = document.getElementById("yellow-yield-value");
@@ -687,39 +687,42 @@ async function calculateYields() {
             data.selection.forEach((selection) => {
               if (selection.programNumber === previousHorseNumber) {
                 switch (selection.color[0]) {
-                  case "red":
+                  case "red": {
                     previousRedYield = Number(
                       Number(previousRedYield + item[3]).toFixed(1)
                     );
+                    previousTotalYield = Number(
+                      Number(previousTotalYield + item[3]).toFixed(
+                        1
+                      )
+                    );
                     break;
-                  case "yellow":
+                  }
+                  case "yellow": {
                     previousYellowYield = Number(
                       Number(redYield + item[3]).toFixed(1)
                     );
+                    previousTotalYield = Number(
+                      Number(previousTotalYield + item[3]).toFixed(
+                        1
+                      )
+                    );
                     break;
-                  case "green":
+                  }
+                  case "green":{
                     previousGreenYield = Number(
                       Number(redYield + item[3]).toFixed(1)
                     );
+                    previousTotalYield = Number(
+                      Number(previousTotalYield + item[3]).toFixed(
+                        1
+                      )
+                    );
                     break;
+                  }
                 }
               }
             });
-            if (previousRedYield !== -2) {
-              previousTotalYield = Number(
-                Number(previousTotalYield + previousRedYield + 2).toFixed(1)
-              );
-            }
-            if (previousYellowYield !== -2) {
-              previousTotalYield = Number(
-                Number(previousTotalYield + previousYellowYield + 2).toFixed(1)
-              );
-            }
-            if (previousGreenYield !== -2) {
-              previousTotalYield = Number(
-                Number(previousTotalYield + previousGreenYield + 2).toFixed(1)
-              );
-            }
           });
 
           progressiveRedYield = Number(
