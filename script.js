@@ -215,6 +215,7 @@ async function fetchRaceDetails(raceNumber) {
       await setSelectedRace(data);
     })
     .catch((error) => {
+      console.log(error);
       populateExoticResults([]);
       populatePlayersTable([]);
       populateResults([]);
@@ -604,7 +605,7 @@ async function calculateYields() {
   let yellowYield = -2;
   let greenYield = -2;
   let progressiveRedYield = 0;
-  let progressiveTotalYield = -2 * selectedRace.selection.length;
+  let progressiveTotalYield = -2 * selectedRace?.selection?.length;
   const redYieldContainer = document.getElementById("red-yield-value");
   const yellowYieldContainer = document.getElementById("yellow-yield-value");
   const greenYieldContainer = document.getElementById("green-yield-value");
@@ -615,7 +616,7 @@ async function calculateYields() {
     "progressive-total-yield-value"
   );
 
-  if (selectedRace.status === "Official") {
+  if (selectedRace.status === "Official" || selectedRace.status === "Closed") {
     const resultWithWinValue = selectedRace?.result?.filter(
       (item) => !item[0].includes("$") && item[0] !== " " && item[3] !== " "
     );
@@ -623,7 +624,7 @@ async function calculateYields() {
     resultWithWinValue.forEach((item) => {
       const horseName = item[2];
 
-      const horseNumber = selectedRace.find(
+      const horseNumber = selectedRace.playerInfo.find(
         (race) => race.name === horseName
       ).programNumber;
 
@@ -631,29 +632,34 @@ async function calculateYields() {
         if (selection.programNumber === horseNumber) {
           switch (selection.color[0]) {
             case "red":
-              redYield = redYield + item[3];
+              redYield = Number(Number(redYield + item[3]).toFixed(1));
               break;
             case "yellow":
-              yellowYield = redYield + item[3];
+              yellowYield = Number(Number(yellowYield + item[3]).toFixed(1));
+
               break;
             case "green":
-              greenYield = redYield + item[3];
+              greenYield = Number(Number(greenYield + item[3]).toFixed(1));
               break;
           }
         }
       });
-
       if (redYield !== -2) {
-        progressiveTotalYield = progressiveTotalYield + redYield;
+        progressiveTotalYield = Number(
+          Number(progressiveTotalYield + redYield).toFixed(1)
+        );
       }
       if (yellowYield !== -2) {
-        progressiveTotalYield = progressiveTotalYield + yellowYield;
+        progressiveTotalYield = Number(
+          Number(progressiveTotalYield + yellowYield).toFixed(1)
+        );
       }
       if (greenYield !== -2) {
-        progressiveTotalYield = progressiveTotalYield + greenYield;
+        progressiveTotalYield = Number(
+          Number(progressiveTotalYield + greenYield).toFixed(1)
+        );
       }
     });
-
     for (i = 1; i < Number(selectedRace.raceNumber); i++) {
       await fetch(
         `${API_ADDRESS}race-detail/?bris_code=${selectedTrack.brisCode}&race_number=${i}`,
@@ -674,7 +680,7 @@ async function calculateYields() {
           previousResultWithWinValue.forEach((item) => {
             const horseName = item[2];
 
-            const previousHorseNumber = data.find(
+            const previousHorseNumber = data.playerInfo.find(
               (race) => race.name === horseName
             ).programNumber;
 
@@ -682,46 +688,100 @@ async function calculateYields() {
               if (selection.programNumber === previousHorseNumber) {
                 switch (selection.color[0]) {
                   case "red":
-                    previousRedYield = previousRedYield + item[3];
+                    previousRedYield = Number(
+                      Number(previousRedYield + item[3]).toFixed(1)
+                    );
                     break;
                   case "yellow":
-                    previousYellowYield = redYield + item[3];
+                    previousYellowYield = Number(
+                      Number(redYield + item[3]).toFixed(1)
+                    );
                     break;
                   case "green":
-                    previousGreenYield = redYield + item[3];
+                    previousGreenYield = Number(
+                      Number(redYield + item[3]).toFixed(1)
+                    );
                     break;
                 }
               }
             });
-
             if (previousRedYield !== -2) {
-              previousTotalYield = previousTotalYield + previousRedYield;
+              previousTotalYield = Number(
+                Number(previousTotalYield + previousRedYield).toFixed(1)
+              );
             }
             if (previousYellowYield !== -2) {
-              previousTotalYield = previousTotalYield + previousYellowYield;
+              previousTotalYield = Number(
+                Number(previousTotalYield + previousYellowYield).toFixed(1)
+              );
             }
             if (previousGreenYield !== -2) {
-              previousTotalYield = previousTotalYield + previousGreenYield;
+              previousTotalYield = Number(
+                Number(previousTotalYield + previousGreenYield).toFixed(1)
+              );
             }
           });
 
-          progressiveRedYield = progressiveRedYield + previousRedYield;
-          progressiveTotalYield = progressiveTotalYield + previousTotalYield;
+          progressiveRedYield = Number(
+            Number(progressiveRedYield + previousRedYield).toFixed(1)
+          );
+          progressiveTotalYield = Number(
+            Number(progressiveTotalYield + previousTotalYield).toFixed(1)
+          );
+        })
+        .catch((error) => {
+          console.log(error);
         });
     }
   }
 
-  redYieldContainer.innerText = redYield > 0 ? `+${redYield}` : redYield;
-  yellowYieldContainer.innerText =
-    yellowYield > 0 ? `+${yellowYield}` : yellowYield;
-  greenYieldContainer.innerText =
-    greenYield > 0 ? `+${greenYield}` : greenYield;
-  progressiveRedYieldContainer.innerText =
-    progressiveRedYield > 0 ? `+${progressiveRedYield}` : progressiveRedYield;
-  progressiveTotalYieldContainer.innerText =
+  function createLightningImage() {
+    const lightningImage = document.createElement("img");
+    lightningImage.src = "./assets/icons/lightning.svg";
+    return lightningImage;
+  }
+
+  redYieldContainer.innerText = null;
+  redYieldContainer.append(
+    createLightningImage(),
+    redYield > 0 ? `Red Yield: +${redYield}` : `Red Yield: ${redYield}`
+  );
+
+  yellowYieldContainer.innerText = null;
+  yellowYieldContainer.append(
+    createLightningImage(),
+    yellowYield > 0
+      ? `Yellow Yield: +${yellowYield}`
+      : `Yellow Yield: ${yellowYield}`
+  );
+
+  greenYieldContainer.innerText = null;
+  greenYieldContainer.append(
+    createLightningImage(),
+    greenYield > 0
+      ? `Green Yield: +${greenYield}`
+      : `Green Yield: ${greenYield}`
+  );
+
+  progressiveRedYieldContainer.innerText = null;
+  progressiveRedYieldContainer.append(
+    createLightningImage(),
+    progressiveRedYield > 0
+      ? `Progressive Red
+    Yield: +${progressiveRedYield}`
+      : `Progressive Red
+    Yield: ${progressiveRedYield}`
+  );
+
+  progressiveTotalYieldContainer.innerText = null;
+  progressiveTotalYieldContainer.append(
+    createLightningImage(),
     progressiveTotalYield > 0
-      ? `+${progressiveTotalYield}`
-      : progressiveTotalYield;
+      ? `Progressive Total
+      Yield: +${progressiveTotalYield}`
+      : `Progressive Total
+      Yield: ${progressiveTotalYield}`
+  );
 }
 
 function changeSideBarVisibility(barId) {
