@@ -197,6 +197,9 @@ main {
 
 .info-block :nth-child(2) {
   font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .yield-card {

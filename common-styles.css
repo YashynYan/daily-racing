@@ -111,11 +111,12 @@
   font-style: italic;
 }
 
-html, body {
+html,
+body {
   font-family: Suisse Intl;
 }
 
-body{
+body {
   margin: 0;
 }
 
@@ -211,6 +212,66 @@ footer .footer-text .copyright {
 footer .footer-text .info-text {
   width: 493px;
   text-align: center;
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border: 8px solid #4d4dff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #4d4dff transparent transparent transparent;
+}
+
+.lds-ring-small {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.lds-ring-small div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #4d4dff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #4d4dff transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1),
+.lds-ring-small div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2),
+.lds-ring-small div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3),
+.lds-ring-small div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media screen and (max-width: 1000px) {

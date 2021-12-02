@@ -200,11 +200,14 @@ function setSelectedTrack(selectedTrackName) {
   fetchRaceDetails(
     selectedRace === null || previousTrack.trackName !== selectedTrackName
       ? selectedTrack.currentRace
-      : selectedRace.raceNumber
+      : selectedRace.raceNumber,
+    previousTrack?.trackName !== selectedTrackName
   );
 }
 
-async function fetchRaceDetails(raceNumber) {
+async function fetchRaceDetails(raceNumber, sameRace) {
+  console.log(raceNumber, selectedRace?.raceNumber, sameRace);
+  (raceNumber === selectedRace?.raceNumber && !sameRace) || setRaceLoading();
   await fetch(
     `${API_ADDRESS}race-detail/?bris_code=${selectedTrack.brisCode}&race_number=${raceNumber}`,
     { keepalive: true, headers: { "Content-Type": "application/json" } }
@@ -668,8 +671,6 @@ async function calculateYields() {
         .then((response) => response.json())
         .then((data) => {
           let previousRedYield = -2;
-          let previousYellowYield = -2;
-          let previousGreenYield = -2;
           let previousTotalYield = -2 * data.selection.length;
 
           const previousResultWithWinValue = data?.result?.filter(
@@ -692,9 +693,7 @@ async function calculateYields() {
                       Number(previousRedYield + item[3]).toFixed(1)
                     );
                     previousTotalYield = Number(
-                      Number(previousTotalYield + item[3]).toFixed(
-                        1
-                      )
+                      Number(previousTotalYield + item[3]).toFixed(1)
                     );
                     break;
                   }
@@ -703,20 +702,16 @@ async function calculateYields() {
                       Number(redYield + item[3]).toFixed(1)
                     );
                     previousTotalYield = Number(
-                      Number(previousTotalYield + item[3]).toFixed(
-                        1
-                      )
+                      Number(previousTotalYield + item[3]).toFixed(1)
                     );
                     break;
                   }
-                  case "green":{
+                  case "green": {
                     previousGreenYield = Number(
                       Number(redYield + item[3]).toFixed(1)
                     );
                     previousTotalYield = Number(
-                      Number(previousTotalYield + item[3]).toFixed(
-                        1
-                      )
+                      Number(previousTotalYield + item[3]).toFixed(1)
                     );
                     break;
                   }
@@ -917,4 +912,88 @@ function checkWinOdd(odd) {
   } else {
     return Number(Number(odd).toFixed(2));
   }
+}
+
+function createLoadingSpinner(small = false) {
+  const spinner = document.createElement("div");
+  spinner.className = `lds-ring${small ? "-small" : ""}`;
+  for (i = 0; i < 4; i++) {
+    const div = document.createElement("div");
+    spinner.append(div);
+  }
+  return spinner;
+}
+
+function setRaceLoading() {
+  const raceDistance = document.getElementById("race-distance");
+  raceDistance.innerText = "";
+  raceDistance.append(createLoadingSpinner(true));
+
+  const raceSurface = document.getElementById("race-surface");
+  raceSurface.innerText = "";
+  raceSurface.append(createLoadingSpinner(true));
+
+  const raceAge = document.getElementById("race-age");
+  raceAge.innerHTML = "";
+  raceAge.append(createLoadingSpinner(true));
+
+  const raceValue = document.getElementById("race-value");
+  raceValue.innerHTML = "";
+  raceValue.append(createLoadingSpinner(true));
+
+  const raceClass = document.getElementById("race-class");
+  raceClass.innerHTML = "";
+  raceClass.append(createLoadingSpinner(true));
+
+  const playersTable = document.getElementById("table-players-info");
+  playersTable.innerHTML = null;
+  const tableRow = document.createElement("tr");
+  const tableData = document.createElement("th");
+  tableData.colSpan = 5;
+
+  tableData.append(createLoadingSpinner(false));
+  tableRow.append(tableData);
+  playersTable.append(tableRow);
+
+  const redYieldContainer = document.getElementById("red-yield-value");
+  redYieldContainer.innerHTML = "";
+  redYieldContainer.append(createLoadingSpinner(true));
+
+  const yellowYieldContainer = document.getElementById("yellow-yield-value");
+  yellowYieldContainer.innerHTML = "";
+  yellowYieldContainer.append(createLoadingSpinner(true));
+
+  const greenYieldContainer = document.getElementById("green-yield-value");
+  greenYieldContainer.innerHTML = "";
+  greenYieldContainer.append(createLoadingSpinner(true));
+
+  const progressiveRedYieldContainer = document.getElementById(
+    "progressive-red-yield-value"
+  );
+  progressiveRedYieldContainer.innerHTML = "";
+  progressiveRedYieldContainer.append(createLoadingSpinner(true));
+
+  const progressiveTotalYieldContainer = document.getElementById(
+    "progressive-total-yield-value"
+  );
+  progressiveTotalYieldContainer.innerHTML = "";
+  progressiveTotalYieldContainer.append(createLoadingSpinner(true));
+
+  const suggestedWagersContainer = document.getElementById(
+    "suggested-wagers-container"
+  );
+  suggestedWagersContainer.innerHTML = "";
+  suggestedWagersContainer.append(createLoadingSpinner(false));
+
+  const resultsContainer = document.getElementById("results-container");
+  resultsContainer.innerHTML = "";
+  resultsContainer.append(createLoadingSpinner(false));
+
+  const exoticsContainer = document.getElementById("exotics-container");
+  exoticsContainer.innerHTML = "";
+  exoticsContainer.append(createLoadingSpinner(false));
+
+  const raceBarMtpBlock = document.getElementById("race-bar-mtp-block");
+  raceBarMtpBlock.innerHTML = "";
+  raceBarMtpBlock.append(createLoadingSpinner(true));
 }
