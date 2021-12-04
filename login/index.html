@@ -62,7 +62,12 @@
         </p>
       </div>
     </footer>
-    <div class="dialog" id="sign-in-dialog">
+    <!-- <div
+      class="dialog"
+      id="sign-in-dialog"
+      style="display: {{form.errors|yesno: 'block,none' }}"
+    > -->
+    <div class="dialog" id="sign-in-dialog"> <!-- Comment/Delete This line -->
       <div class="dialog-window">
         <div class="dialog-close-block-mobile">
           <img
@@ -97,97 +102,54 @@
                 height="64"
               />
 
-              <!-- {% if form.errors %} -->
-                <!-- <label for="username-field">Username</label>
+              <label for="username-field">Username</label>
+              <input
+                type="text"
+                id="username-field"
+                placeholder="Enter your login"
+                required
+                name="username"
+                class="{{form.errors|yesno: 'invalid-field,' }}"
+                onchange="hideError()"
+              />
+              <label for="password-field">Password</label>
+              <div class="password-block">
                 <input
-                  type="text"
-                  id="username-field"
-                  placeholder="Enter your login"
-                  class="invalid-field"
+                  id="password-field"
+                  type="password"
+                  name="password"
+                  placeholder="Enter your password"
                   required
-                  name="username"
+                  class="{{form.errors|yesno: 'invalid-field,' }}"
                   onchange="hideError()"
                 />
-                <label for="password-field">Password</label>
-                <div class="password-block">
-                  <input
-                    id="password-field"
-                    type="password"
-                    name="password"
-                    class="invalid-field"
-                    placeholder="Enter your password"
-                    required
-                    onchange="hideError()"
-                  />
-                  <img
-                    class="eye-icon"
-                    id="eye-icon"
-                    onClick="showPassword()"
-                    src="../assets/icons/eye-icon.svg"
-                  />
-                </div>
-                <div class="remember-me">
-                  <label class="remember-me-label" for="remember-me">
-                    <input type="checkbox" id="remember-me" />
-                    <span class="checkbox"></span>
-                    Remember me
-                  </label>
-                </div>
-                <div id="error-field" class="error-field">
-                  <img src="../assets/icons/clarity_error.svg" />
-                  Invalid username and/or password
-                </div>
-                <button
-                  type="submit"
-                  class="btn primary custom-main-button submit-button"
-                >
-                  Sign In
-                </button> -->
-              <!-- {% else %} -->
-                <label for="username-field">Username</label>
-                <input
-                  type="text"
-                  id="username-field"
-                  placeholder="Enter your login"
-                  required
-                  name="username"
-                  onchange="hideError()"
+                <img
+                  class="eye-icon"
+                  id="eye-icon"
+                  onClick="showPassword()"
+                  src="../assets/icons/eye-icon.svg"
                 />
-                <label for="password-field">Password</label>
-                <div class="password-block">
-                  <input
-                    id="password-field"
-                    type="password"
-                    name="password"
-                    placeholder="Enter your password"
-                    required
-                    onchange="hideError()"
-                  />
-                  <img
-                    class="eye-icon"
-                    id="eye-icon"
-                    onClick="showPassword()"
-                    src="../assets/icons/eye-icon.svg"
-                  />
-                </div>
-                <div class="remember-me">
-                  <label class="remember-me-label" for="remember-me">
-                    <input type="checkbox" id="remember-me" />
-                    <span class="checkbox"></span>
-                    Remember me
-                  </label>
-                </div>
-                <div id="error-field" class="error-field hidden">
-                  <img src="../assets/icons/clarity_error.svg" />
-                  Invalid username and/or password
-                </div>
-                <button
-                  type="submit"
-                  class="btn primary custom-main-button submit-button"
-                >
-                  Sign In
-                </button>
-              <!-- {% endif %} -->
+              </div>
+              <div class="remember-me">
+                <label class="remember-me-label" for="remember-me">
+                  <input type="checkbox" id="remember-me" />
+                  <span class="checkbox"></span>
+                  Remember me
+                </label>
+              </div>
+              <div
+                id="error-field"
+                class="{{form.errors|yesno: 'error-field,error-field hidden' }}"
+              >
+                <img src="../assets/icons/clarity_error.svg" />
+                Invalid username and/or password
+              </div>
+              <button
+                type="submit"
+                class="btn primary custom-main-button submit-button"
+              >
+                Sign In
+              </button>
             </div>
           </form>
         </div>

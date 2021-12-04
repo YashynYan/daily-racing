@@ -105,9 +105,7 @@ main {
   padding-right: 58px;
 }
 
-.invalid-field {
-  border: 1px solid #ff4d4d;
-}
+
 
 .error-field {
   color: #ff4d4d;
@@ -236,6 +234,11 @@ main {
   padding: 8px;
   height: 40px;
   margin-bottom: 12px;
+}
+
+.dialog .dialog-window .dialog-form-block .dialog-form input.invalid-field {
+
+    border: 1px solid #ff4d4d;
 }
 
 .dialog .dialog-window .dialog-form-block .dialog-form .remember-me {
