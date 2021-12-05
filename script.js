@@ -105,9 +105,9 @@ function populateTracksTable(tracks) {
       const trackBlock = document.createElement("div");
       trackBlock.className = "flex-row";
       const countryImage = document.createElement("img");
-      countryImage.src = `./assets/icons/flags/${countryCode[
-        item.brisCode
-      ]?.toLowerCase()}.svg`;
+      countryImage.src = `./assets/icons/flags/${
+        countryCode[item.brisCode]?.toLowerCase() || "au"
+      }.svg`;
       countryImage.className = "margin-right-8";
       trackBlock.append(countryImage, item.trackName);
       trackCell.append(trackBlock);
@@ -134,9 +134,9 @@ function setSelectedTrack(selectedTrackName) {
   const previousTrack = selectedTrack;
   selectedTrack = tracks.find((item) => item.trackName === selectedTrackName);
   const countryImage = document.createElement("img");
-  countryImage.src = `./assets/icons/flags/${countryCode[
-    selectedTrack.brisCode
-  ]?.toLowerCase()}.svg`;
+  countryImage.src = `./assets/icons/flags/${
+    countryCode[selectedTrack.brisCode]?.toLowerCase() || "au"
+  }.svg`;
   countryImage.className = "margin-right-8";
   const raceNameBlock = document.getElementById("race-name");
   const raceNameBlockMobile = document.getElementById("race-name-mobile");
@@ -206,7 +206,6 @@ function setSelectedTrack(selectedTrackName) {
 }
 
 async function fetchRaceDetails(raceNumber, sameRace) {
-  console.log(raceNumber, selectedRace?.raceNumber, sameRace);
   (raceNumber === selectedRace?.raceNumber && !sameRace) || setRaceLoading();
   await fetch(
     `${API_ADDRESS}race-detail/?bris_code=${selectedTrack.brisCode}&race_number=${raceNumber}`,
@@ -214,11 +213,9 @@ async function fetchRaceDetails(raceNumber, sameRace) {
   )
     .then((response) => response.json())
     .then(async (data) => {
-      console.log(data);
       await setSelectedRace(data);
     })
     .catch((error) => {
-      console.log(error);
       populateExoticResults([]);
       populatePlayersTable([]);
       populateResults([]);
@@ -727,9 +724,7 @@ async function calculateYields() {
             Number(progressiveTotalYield + previousTotalYield).toFixed(1)
           );
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => {});
     }
   }
 
