@@ -3,6 +3,7 @@ tracks = [];
 selectedTrack = null;
 selectedRace = null;
 searchQuery = "";
+raceRefetchTimer = 0;
 
 const bulletColors = {
   red: "#FF4D4D",
@@ -81,7 +82,7 @@ async function getTrackList() {
 
   setTimeout(() => {
     getTrackList();
-  }, 8000);
+  }, 4000);
 }
 
 function populateTracksTable(tracks) {
@@ -203,10 +204,20 @@ function setSelectedTrack(selectedTrackName) {
       : selectedRace.raceNumber,
     previousTrack?.trackName !== selectedTrackName
   );
+
+  raceRefetchTimer = setInterval(() => {
+    fetchRaceDetails(
+      selectedRace === null || previousTrack?.trackName !== selectedTrackName
+        ? selectedTrack.currentRace
+        : selectedRace.raceNumber,
+      previousTrack?.trackName !== selectedTrackName
+    );
+  }, 2000);
 }
 
 async function fetchRaceDetails(raceNumber, sameRace) {
   (raceNumber === selectedRace?.raceNumber && !sameRace) || setRaceLoading();
+  clearInterval(raceRefetchTimer);
   await fetch(
     `${API_ADDRESS}race-detail/?bris_code=${selectedTrack.brisCode}&race_number=${raceNumber}`,
     { keepalive: true, headers: { "Content-Type": "application/json" } }
