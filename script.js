@@ -601,6 +601,9 @@ function populateSuggestedWagers(selection) {
     /**Generate wager block */
     const wagerBlock = document.createElement("div");
     wagerBlock.className = "wager";
+    if (Number(playerInfo.odds) < 1) {
+      wagerBlock.classList.add("mtp-block-warning");
+    }
     wagerBlock.innerText = checkWinOdd(playerInfo.odds);
 
     wagerCard.append(numberBlock, wagerBlock);
